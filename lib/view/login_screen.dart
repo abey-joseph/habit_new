@@ -34,6 +34,8 @@ class LoginScreen extends StatelessWidget {
           //password textfeild
           loginTextField(true, "Password", passwordController),
 
+          //forgot passeord button
+
           //login button
           loginButton("LOGIN", () async {
             loginOutput = await Auth().logInUserWithEmailAndPass(
