@@ -10,9 +10,6 @@ class IntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-
     return Scaffold(
       body: Stack(
         children: [
@@ -42,7 +39,7 @@ class IntroScreen extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        loginButton(() {
+                        loginOrSignUpButton(() {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                                 builder: (context) => const LoginScreen()),
@@ -54,7 +51,7 @@ class IntroScreen extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        loginButton(() {
+                        loginOrSignUpButton(() {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                                 builder: (context) => const SignUpScreen()),
@@ -83,7 +80,9 @@ class IntroScreen extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        loginScreenTitile('Habit Tracker', 50),
+                        Hero(
+                            tag: 'title',
+                            child: loginScreenTitile('Habit Tracker', 50)),
                         SizedBox(
                           height: 20,
                         ),
