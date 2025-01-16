@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:habit/core/bloc/bloc/habit_bloc.dart';
+import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_options.dart';
 import 'package:habit/core/hive/habit_hive_operation.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
