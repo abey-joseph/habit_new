@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
 import 'package:habit/view/home_screen.dart';
