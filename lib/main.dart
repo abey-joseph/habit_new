@@ -4,7 +4,7 @@ import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_options.dart';
 import 'package:habit/core/hive/habit_hive_operation.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
-import 'package:habit/view/splash_screen.dart';
+import 'package:habit/view/screens/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main(List<String> args) async {
@@ -19,7 +19,14 @@ void main(List<String> args) async {
   //locator is the global indstance of get_it (defined inside lib/data/dependencies/get_it_dependencies.dart)
   await locator<HabitHiveOperation>().inItHive();
 
-  runApp(HabitTracker());
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider<HabitBloc>(
+        create: (context) => HabitBloc()..add(HabitEvent.fetchHabit()),
+      ),
+    ],
+    child: HabitTracker(),
+  ));
 }
 
 class HabitTracker extends StatelessWidget {
@@ -30,10 +37,6 @@ class HabitTracker extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light(),
-        home: MultiBlocProvider(providers: [
-          BlocProvider<HabitBloc>(
-            create: (context) => HabitBloc()..add(HabitEvent.fetchHabit()),
-          ),
-        ], child: SplashScreen()));
+        home: SplashScreen());
   }
 }

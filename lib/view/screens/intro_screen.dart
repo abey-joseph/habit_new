@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:habit/view/login_screen.dart';
-import 'package:habit/view/sign_up_screen.dart';
-import 'package:habit/view/widgets/login_screen_buttons.dart';
-import 'package:habit/view/widgets/text_widgets.dart';
+import 'package:habit/view/screens/login_screen.dart';
+import 'package:habit/view/screens/sign_up_screen.dart';
+import 'package:habit/view/widgets/global/login_screen_buttons.dart';
+import 'package:habit/view/widgets/global/text_widgets.dart';
 import 'package:lottie/lottie.dart';
 
 class IntroScreen extends StatelessWidget {
