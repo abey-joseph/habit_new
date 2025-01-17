@@ -2,6 +2,8 @@
 
 import 'dart:developer';
 
+import 'package:habit/core/firebase/firebase_auth_actions.dart';
+import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/data/model/date_status_model.dart';
 import 'package:habit/data/model/habit_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -57,7 +59,12 @@ class HabitHiveOperation {
 
   Future<Habit> getHabit(int index) async {
     var habitBox = _openBox();
-    return Habit(habit: 'test', dateStatus: []);
+    return Habit(
+        habit: 'test',
+        UID: (locator<FirebaseAuthActions>().currentUser == null)
+            ? 'null'
+            : locator<FirebaseAuthActions>().currentUser!.uid,
+        dateStatus: []);
   }
 
   Future<List<Habit>> getAllHabit() async {

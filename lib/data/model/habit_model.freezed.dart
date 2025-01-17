@@ -23,6 +23,8 @@ mixin _$Habit {
   @HiveField(0)
   String get habit => throw _privateConstructorUsedError;
   @HiveField(1)
+  String get UID => throw _privateConstructorUsedError;
+  @HiveField(2)
   List<DateStatus> get dateStatus => throw _privateConstructorUsedError;
 
   /// Serializes this Habit to a JSON map.
@@ -40,7 +42,9 @@ abstract class $HabitCopyWith<$Res> {
       _$HabitCopyWithImpl<$Res, Habit>;
   @useResult
   $Res call(
-      {@HiveField(0) String habit, @HiveField(1) List<DateStatus> dateStatus});
+      {@HiveField(0) String habit,
+      @HiveField(1) String UID,
+      @HiveField(2) List<DateStatus> dateStatus});
 }
 
 /// @nodoc
@@ -59,12 +63,17 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
   @override
   $Res call({
     Object? habit = null,
+    Object? UID = null,
     Object? dateStatus = null,
   }) {
     return _then(_value.copyWith(
       habit: null == habit
           ? _value.habit
           : habit // ignore: cast_nullable_to_non_nullable
+              as String,
+      UID: null == UID
+          ? _value.UID
+          : UID // ignore: cast_nullable_to_non_nullable
               as String,
       dateStatus: null == dateStatus
           ? _value.dateStatus
@@ -82,7 +91,9 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@HiveField(0) String habit, @HiveField(1) List<DateStatus> dateStatus});
+      {@HiveField(0) String habit,
+      @HiveField(1) String UID,
+      @HiveField(2) List<DateStatus> dateStatus});
 }
 
 /// @nodoc
@@ -99,12 +110,17 @@ class __$$HabitImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? habit = null,
+    Object? UID = null,
     Object? dateStatus = null,
   }) {
     return _then(_$HabitImpl(
       habit: null == habit
           ? _value.habit
           : habit // ignore: cast_nullable_to_non_nullable
+              as String,
+      UID: null == UID
+          ? _value.UID
+          : UID // ignore: cast_nullable_to_non_nullable
               as String,
       dateStatus: null == dateStatus
           ? _value._dateStatus
@@ -119,7 +135,8 @@ class __$$HabitImplCopyWithImpl<$Res>
 class _$HabitImpl implements _Habit {
   const _$HabitImpl(
       {@HiveField(0) required this.habit,
-      @HiveField(1) required final List<DateStatus> dateStatus})
+      @HiveField(1) required this.UID,
+      @HiveField(2) required final List<DateStatus> dateStatus})
       : _dateStatus = dateStatus;
 
   factory _$HabitImpl.fromJson(Map<String, dynamic> json) =>
@@ -128,9 +145,12 @@ class _$HabitImpl implements _Habit {
   @override
   @HiveField(0)
   final String habit;
-  final List<DateStatus> _dateStatus;
   @override
   @HiveField(1)
+  final String UID;
+  final List<DateStatus> _dateStatus;
+  @override
+  @HiveField(2)
   List<DateStatus> get dateStatus {
     if (_dateStatus is EqualUnmodifiableListView) return _dateStatus;
     // ignore: implicit_dynamic_type
@@ -139,7 +159,7 @@ class _$HabitImpl implements _Habit {
 
   @override
   String toString() {
-    return 'Habit(habit: $habit, dateStatus: $dateStatus)';
+    return 'Habit(habit: $habit, UID: $UID, dateStatus: $dateStatus)';
   }
 
   @override
@@ -148,14 +168,15 @@ class _$HabitImpl implements _Habit {
         (other.runtimeType == runtimeType &&
             other is _$HabitImpl &&
             (identical(other.habit, habit) || other.habit == habit) &&
+            (identical(other.UID, UID) || other.UID == UID) &&
             const DeepCollectionEquality()
                 .equals(other._dateStatus, _dateStatus));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, habit, const DeepCollectionEquality().hash(_dateStatus));
+  int get hashCode => Object.hash(runtimeType, habit, UID,
+      const DeepCollectionEquality().hash(_dateStatus));
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.
@@ -176,7 +197,8 @@ class _$HabitImpl implements _Habit {
 abstract class _Habit implements Habit {
   const factory _Habit(
       {@HiveField(0) required final String habit,
-      @HiveField(1) required final List<DateStatus> dateStatus}) = _$HabitImpl;
+      @HiveField(1) required final String UID,
+      @HiveField(2) required final List<DateStatus> dateStatus}) = _$HabitImpl;
 
   factory _Habit.fromJson(Map<String, dynamic> json) = _$HabitImpl.fromJson;
 
@@ -185,6 +207,9 @@ abstract class _Habit implements Habit {
   String get habit;
   @override
   @HiveField(1)
+  String get UID;
+  @override
+  @HiveField(2)
   List<DateStatus> get dateStatus;
 
   /// Create a copy of Habit

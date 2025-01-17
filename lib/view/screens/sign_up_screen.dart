@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
+import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/view/screens/home_screen.dart';
 import 'package:habit/view/widgets/global/login_screen_buttons.dart';
 import 'package:habit/view/widgets/global/login_textfield.dart';
@@ -44,8 +45,10 @@ class SignUpScreen extends StatelessWidget {
           //login button
           loginButton("SIGN UP", () async {
             //log(passwordController.text);
-            loginOutput = await Auth().signInUserWithEmailAndPass(
-                email: emailController.text, password: passwordController.text);
+            loginOutput = await locator<FirebaseAuthActions>()
+                .signInUserWithEmailAndPass(
+                    email: emailController.text,
+                    password: passwordController.text);
 
             if (loginOutput == "Sign Up Success") {
               if (!context.mounted) return;

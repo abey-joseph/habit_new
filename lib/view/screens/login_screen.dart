@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
+import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/view/screens/home_screen.dart';
 import 'package:habit/view/widgets/global/login_screen_buttons.dart';
 import 'package:habit/view/widgets/global/login_textfield.dart';
@@ -38,8 +39,10 @@ class LoginScreen extends StatelessWidget {
 
           //login button
           loginButton("LOGIN", () async {
-            loginOutput = await Auth().logInUserWithEmailAndPass(
-                email: emailController.text, password: passwordController.text);
+            loginOutput = await locator<FirebaseAuthActions>()
+                .logInUserWithEmailAndPass(
+                    email: emailController.text,
+                    password: passwordController.text);
 
             if (loginOutput == "login Success") {
               if (!context.mounted) return;

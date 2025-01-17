@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
+import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/view/screens/home_screen.dart';
 import 'package:habit/view/screens/intro_screen.dart';
 
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     // check if sign in or not
 
-    User? user = Auth().currentUser;
+    User? user = locator<FirebaseAuthActions>().currentUser;
 
     // - if login already - go to homescreen
     // - if log out then got to login screen

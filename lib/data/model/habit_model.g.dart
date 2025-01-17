@@ -18,17 +18,20 @@ class HabitAdapter extends TypeAdapter<Habit> {
     };
     return Habit(
       habit: fields[0] as String,
-      dateStatus: (fields[1] as List).cast<DateStatus>(),
+      UID: fields[1] as String,
+      dateStatus: (fields[2] as List).cast<DateStatus>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Habit obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.habit)
       ..writeByte(1)
+      ..write(obj.UID)
+      ..writeByte(2)
       ..write(obj.dateStatus);
   }
 
@@ -49,6 +52,7 @@ class HabitAdapter extends TypeAdapter<Habit> {
 
 _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
       habit: json['habit'] as String,
+      UID: json['UID'] as String,
       dateStatus: (json['dateStatus'] as List<dynamic>)
           .map((e) => DateStatus.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -57,5 +61,6 @@ _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
 Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
     <String, dynamic>{
       'habit': instance.habit,
+      'UID': instance.UID,
       'dateStatus': instance.dateStatus,
     };

@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/data/constant/habit_list_and_operation/habit_list_and_operation.dart';
 
 part 'habit_event.dart';

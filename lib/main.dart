@@ -16,7 +16,7 @@ void main(List<String> args) async {
   setupDependencies();
 
   // Initialize Hive
-  //locator is the global indstance of get_it (defined inside lib/data/dependencies/get_it_dependencies.dart)
+  //locator is the global instance of get_it (defined inside lib/data/dependencies/get_it_dependencies.dart)
   await locator<HabitHiveOperation>().inItHive();
 
   runApp(MultiBlocProvider(

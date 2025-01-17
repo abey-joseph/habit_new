@@ -1,3 +1,4 @@
+import 'package:habit/core/firebase/firebase_auth_actions.dart';
 import 'package:habit/core/hive/habit_hive_operation.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/data/model/habit_model.dart';
@@ -21,7 +22,12 @@ Future<List<String>> getHabitNameList() async {
 
 Future<String> addHabit(String habitName) async {
   //vconvert to Habit class
-  Habit habit = Habit(habit: habitName, dateStatus: []);
+  Habit habit = Habit(
+      habit: habitName,
+      UID: (locator<FirebaseAuthActions>().currentUser == null)
+          ? 'null'
+          : locator<FirebaseAuthActions>().currentUser!.uid,
+      dateStatus: []);
 
   //add and get oupput
   String output = await locator<HabitHiveOperation>().addHabit(habit);
