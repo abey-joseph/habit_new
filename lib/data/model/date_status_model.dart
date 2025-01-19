@@ -9,7 +9,7 @@ part 'date_status_model.g.dart';
 class DateStatus with _$DateStatus {
   const factory DateStatus({
     @HiveField(0) required DateTime date,
-    @HiveField(1) bool? isCompleted,
+    @HiveField(1) required bool isCompleted,
   }) = _DateStatus;
 
   factory DateStatus.fromJson(Map<String, dynamic> json) =>

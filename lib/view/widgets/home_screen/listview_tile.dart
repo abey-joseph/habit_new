@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/view/screens/detail_screen.dart';
 
@@ -44,26 +47,40 @@ class ListviewTile extends StatelessWidget {
                         },
                         child: Text(habitName)),
                   )),
-              SizedBox(
-                  width: 50,
-                  child: Center(
-                      child: Checkbox(value: true, onChanged: (value) {}))),
-              SizedBox(
-                  width: 50,
-                  child: Center(
-                      child: Checkbox(value: true, onChanged: (value) {}))),
-              SizedBox(
-                  width: 50,
-                  child: Center(
-                      child: Checkbox(value: true, onChanged: (value) {}))),
-              SizedBox(
-                  width: 50,
-                  child: Center(
-                      child: Checkbox(value: true, onChanged: (value) {}))),
-              SizedBox(
-                  width: 50,
-                  child: Center(
-                      child: Checkbox(value: true, onChanged: (value) {}))),
+              BlocBuilder<CheckBoxBloc, CheckBoxState>(
+                builder: (context, state) {
+                  if (state is checkBoxloaded) {
+                    return SizedBox(
+                      width: 250,
+                      child: Row(
+                        children: [
+                          for (int columnIndex = 0;
+                              columnIndex < state.checkList[index].length;
+                              columnIndex++)
+                            Checkbox(
+                              value: state.checkList[index][columnIndex],
+                              onChanged: (value) {
+                                context.read<CheckBoxBloc>().add(
+                                      CheckBoxEvent.toggleCheckBox(
+                                        value:
+                                            value ?? false, // Handle null value
+                                        row: index, // Current row
+                                        column: columnIndex, // Current column
+                                      ),
+                                    );
+                                context
+                                    .read<HabitBloc>()
+                                    .add(HabitEvent.refreshHabit());
+                              },
+                            )
+                        ],
+                      ),
+                    );
+                  } else {
+                    return Text('Loading...');
+                  }
+                },
+              )
             ],
           ),
         ),

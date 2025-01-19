@@ -1,5 +1,6 @@
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
 import 'package:habit/core/hive/habit_hive_operation.dart';
+import 'package:habit/data/constant/habit_status_list_and_operations/habit_status_list_and_operations.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/data/model/habit_model.dart';
 
@@ -17,6 +18,10 @@ Future<List<String>> getHabitNameList() async {
     habitList.add(habit.habit);
   }
 
+  //everytime when fetching the habit names refresh the checkbox list also
+  //for that there is a function in the other file for that list which takes list<Habit> and converts the data
+  fillingDataToCheckBoxList(habits);
+
   return habitList;
 }
 
@@ -24,7 +29,7 @@ Future<String> addHabit(String habitName) async {
   //vconvert to Habit class
   Habit habit = Habit(
       habit: habitName,
-      UID: (locator<FirebaseAuthActions>().currentUser == null)
+      uid: (locator<FirebaseAuthActions>().currentUser == null)
           ? 'null'
           : locator<FirebaseAuthActions>().currentUser!.uid,
       dateStatus: []);

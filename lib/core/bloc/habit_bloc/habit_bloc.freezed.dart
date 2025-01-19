@@ -22,6 +22,7 @@ mixin _$HabitEvent {
     required TResult Function(String habitName) addHabit,
     required TResult Function(int index) deleteHabit,
     required TResult Function(int index, String habitName) editHabit,
+    required TResult Function() refreshHabit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$HabitEvent {
     TResult? Function(String habitName)? addHabit,
     TResult? Function(int index)? deleteHabit,
     TResult? Function(int index, String habitName)? editHabit,
+    TResult? Function()? refreshHabit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$HabitEvent {
     TResult Function(String habitName)? addHabit,
     TResult Function(int index)? deleteHabit,
     TResult Function(int index, String habitName)? editHabit,
+    TResult Function()? refreshHabit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$HabitEvent {
     required TResult Function(_AddHabit value) addHabit,
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_EditHabit value) editHabit,
+    required TResult Function(_RefreshHabit value) refreshHabit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$HabitEvent {
     TResult? Function(_AddHabit value)? addHabit,
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_EditHabit value)? editHabit,
+    TResult? Function(_RefreshHabit value)? refreshHabit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$HabitEvent {
     TResult Function(_AddHabit value)? addHabit,
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_EditHabit value)? editHabit,
+    TResult Function(_RefreshHabit value)? refreshHabit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +140,7 @@ class _$FetchHabitImpl implements _FetchHabit {
     required TResult Function(String habitName) addHabit,
     required TResult Function(int index) deleteHabit,
     required TResult Function(int index, String habitName) editHabit,
+    required TResult Function() refreshHabit,
   }) {
     return fetchHabit();
   }
@@ -145,6 +152,7 @@ class _$FetchHabitImpl implements _FetchHabit {
     TResult? Function(String habitName)? addHabit,
     TResult? Function(int index)? deleteHabit,
     TResult? Function(int index, String habitName)? editHabit,
+    TResult? Function()? refreshHabit,
   }) {
     return fetchHabit?.call();
   }
@@ -156,6 +164,7 @@ class _$FetchHabitImpl implements _FetchHabit {
     TResult Function(String habitName)? addHabit,
     TResult Function(int index)? deleteHabit,
     TResult Function(int index, String habitName)? editHabit,
+    TResult Function()? refreshHabit,
     required TResult orElse(),
   }) {
     if (fetchHabit != null) {
@@ -171,6 +180,7 @@ class _$FetchHabitImpl implements _FetchHabit {
     required TResult Function(_AddHabit value) addHabit,
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_EditHabit value) editHabit,
+    required TResult Function(_RefreshHabit value) refreshHabit,
   }) {
     return fetchHabit(this);
   }
@@ -182,6 +192,7 @@ class _$FetchHabitImpl implements _FetchHabit {
     TResult? Function(_AddHabit value)? addHabit,
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_EditHabit value)? editHabit,
+    TResult? Function(_RefreshHabit value)? refreshHabit,
   }) {
     return fetchHabit?.call(this);
   }
@@ -193,6 +204,7 @@ class _$FetchHabitImpl implements _FetchHabit {
     TResult Function(_AddHabit value)? addHabit,
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_EditHabit value)? editHabit,
+    TResult Function(_RefreshHabit value)? refreshHabit,
     required TResult orElse(),
   }) {
     if (fetchHabit != null) {
@@ -279,6 +291,7 @@ class _$AddHabitImpl implements _AddHabit {
     required TResult Function(String habitName) addHabit,
     required TResult Function(int index) deleteHabit,
     required TResult Function(int index, String habitName) editHabit,
+    required TResult Function() refreshHabit,
   }) {
     return addHabit(habitName);
   }
@@ -290,6 +303,7 @@ class _$AddHabitImpl implements _AddHabit {
     TResult? Function(String habitName)? addHabit,
     TResult? Function(int index)? deleteHabit,
     TResult? Function(int index, String habitName)? editHabit,
+    TResult? Function()? refreshHabit,
   }) {
     return addHabit?.call(habitName);
   }
@@ -301,6 +315,7 @@ class _$AddHabitImpl implements _AddHabit {
     TResult Function(String habitName)? addHabit,
     TResult Function(int index)? deleteHabit,
     TResult Function(int index, String habitName)? editHabit,
+    TResult Function()? refreshHabit,
     required TResult orElse(),
   }) {
     if (addHabit != null) {
@@ -316,6 +331,7 @@ class _$AddHabitImpl implements _AddHabit {
     required TResult Function(_AddHabit value) addHabit,
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_EditHabit value) editHabit,
+    required TResult Function(_RefreshHabit value) refreshHabit,
   }) {
     return addHabit(this);
   }
@@ -327,6 +343,7 @@ class _$AddHabitImpl implements _AddHabit {
     TResult? Function(_AddHabit value)? addHabit,
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_EditHabit value)? editHabit,
+    TResult? Function(_RefreshHabit value)? refreshHabit,
   }) {
     return addHabit?.call(this);
   }
@@ -338,6 +355,7 @@ class _$AddHabitImpl implements _AddHabit {
     TResult Function(_AddHabit value)? addHabit,
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_EditHabit value)? editHabit,
+    TResult Function(_RefreshHabit value)? refreshHabit,
     required TResult orElse(),
   }) {
     if (addHabit != null) {
@@ -431,6 +449,7 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     required TResult Function(String habitName) addHabit,
     required TResult Function(int index) deleteHabit,
     required TResult Function(int index, String habitName) editHabit,
+    required TResult Function() refreshHabit,
   }) {
     return deleteHabit(index);
   }
@@ -442,6 +461,7 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     TResult? Function(String habitName)? addHabit,
     TResult? Function(int index)? deleteHabit,
     TResult? Function(int index, String habitName)? editHabit,
+    TResult? Function()? refreshHabit,
   }) {
     return deleteHabit?.call(index);
   }
@@ -453,6 +473,7 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     TResult Function(String habitName)? addHabit,
     TResult Function(int index)? deleteHabit,
     TResult Function(int index, String habitName)? editHabit,
+    TResult Function()? refreshHabit,
     required TResult orElse(),
   }) {
     if (deleteHabit != null) {
@@ -468,6 +489,7 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     required TResult Function(_AddHabit value) addHabit,
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_EditHabit value) editHabit,
+    required TResult Function(_RefreshHabit value) refreshHabit,
   }) {
     return deleteHabit(this);
   }
@@ -479,6 +501,7 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     TResult? Function(_AddHabit value)? addHabit,
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_EditHabit value)? editHabit,
+    TResult? Function(_RefreshHabit value)? refreshHabit,
   }) {
     return deleteHabit?.call(this);
   }
@@ -490,6 +513,7 @@ class _$DeleteHabitImpl implements _DeleteHabit {
     TResult Function(_AddHabit value)? addHabit,
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_EditHabit value)? editHabit,
+    TResult Function(_RefreshHabit value)? refreshHabit,
     required TResult orElse(),
   }) {
     if (deleteHabit != null) {
@@ -592,6 +616,7 @@ class _$EditHabitImpl implements _EditHabit {
     required TResult Function(String habitName) addHabit,
     required TResult Function(int index) deleteHabit,
     required TResult Function(int index, String habitName) editHabit,
+    required TResult Function() refreshHabit,
   }) {
     return editHabit(index, habitName);
   }
@@ -603,6 +628,7 @@ class _$EditHabitImpl implements _EditHabit {
     TResult? Function(String habitName)? addHabit,
     TResult? Function(int index)? deleteHabit,
     TResult? Function(int index, String habitName)? editHabit,
+    TResult? Function()? refreshHabit,
   }) {
     return editHabit?.call(index, habitName);
   }
@@ -614,6 +640,7 @@ class _$EditHabitImpl implements _EditHabit {
     TResult Function(String habitName)? addHabit,
     TResult Function(int index)? deleteHabit,
     TResult Function(int index, String habitName)? editHabit,
+    TResult Function()? refreshHabit,
     required TResult orElse(),
   }) {
     if (editHabit != null) {
@@ -629,6 +656,7 @@ class _$EditHabitImpl implements _EditHabit {
     required TResult Function(_AddHabit value) addHabit,
     required TResult Function(_DeleteHabit value) deleteHabit,
     required TResult Function(_EditHabit value) editHabit,
+    required TResult Function(_RefreshHabit value) refreshHabit,
   }) {
     return editHabit(this);
   }
@@ -640,6 +668,7 @@ class _$EditHabitImpl implements _EditHabit {
     TResult? Function(_AddHabit value)? addHabit,
     TResult? Function(_DeleteHabit value)? deleteHabit,
     TResult? Function(_EditHabit value)? editHabit,
+    TResult? Function(_RefreshHabit value)? refreshHabit,
   }) {
     return editHabit?.call(this);
   }
@@ -651,6 +680,7 @@ class _$EditHabitImpl implements _EditHabit {
     TResult Function(_AddHabit value)? addHabit,
     TResult Function(_DeleteHabit value)? deleteHabit,
     TResult Function(_EditHabit value)? editHabit,
+    TResult Function(_RefreshHabit value)? refreshHabit,
     required TResult orElse(),
   }) {
     if (editHabit != null) {
@@ -673,6 +703,129 @@ abstract class _EditHabit implements HabitEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditHabitImplCopyWith<_$EditHabitImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RefreshHabitImplCopyWith<$Res> {
+  factory _$$RefreshHabitImplCopyWith(
+          _$RefreshHabitImpl value, $Res Function(_$RefreshHabitImpl) then) =
+      __$$RefreshHabitImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefreshHabitImplCopyWithImpl<$Res>
+    extends _$HabitEventCopyWithImpl<$Res, _$RefreshHabitImpl>
+    implements _$$RefreshHabitImplCopyWith<$Res> {
+  __$$RefreshHabitImplCopyWithImpl(
+      _$RefreshHabitImpl _value, $Res Function(_$RefreshHabitImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HabitEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$RefreshHabitImpl implements _RefreshHabit {
+  const _$RefreshHabitImpl();
+
+  @override
+  String toString() {
+    return 'HabitEvent.refreshHabit()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RefreshHabitImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchHabit,
+    required TResult Function(String habitName) addHabit,
+    required TResult Function(int index) deleteHabit,
+    required TResult Function(int index, String habitName) editHabit,
+    required TResult Function() refreshHabit,
+  }) {
+    return refreshHabit();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchHabit,
+    TResult? Function(String habitName)? addHabit,
+    TResult? Function(int index)? deleteHabit,
+    TResult? Function(int index, String habitName)? editHabit,
+    TResult? Function()? refreshHabit,
+  }) {
+    return refreshHabit?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchHabit,
+    TResult Function(String habitName)? addHabit,
+    TResult Function(int index)? deleteHabit,
+    TResult Function(int index, String habitName)? editHabit,
+    TResult Function()? refreshHabit,
+    required TResult orElse(),
+  }) {
+    if (refreshHabit != null) {
+      return refreshHabit();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchHabit value) fetchHabit,
+    required TResult Function(_AddHabit value) addHabit,
+    required TResult Function(_DeleteHabit value) deleteHabit,
+    required TResult Function(_EditHabit value) editHabit,
+    required TResult Function(_RefreshHabit value) refreshHabit,
+  }) {
+    return refreshHabit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchHabit value)? fetchHabit,
+    TResult? Function(_AddHabit value)? addHabit,
+    TResult? Function(_DeleteHabit value)? deleteHabit,
+    TResult? Function(_EditHabit value)? editHabit,
+    TResult? Function(_RefreshHabit value)? refreshHabit,
+  }) {
+    return refreshHabit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchHabit value)? fetchHabit,
+    TResult Function(_AddHabit value)? addHabit,
+    TResult Function(_DeleteHabit value)? deleteHabit,
+    TResult Function(_EditHabit value)? editHabit,
+    TResult Function(_RefreshHabit value)? refreshHabit,
+    required TResult orElse(),
+  }) {
+    if (refreshHabit != null) {
+      return refreshHabit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshHabit implements HabitEvent {
+  const factory _RefreshHabit() = _$RefreshHabitImpl;
 }
 
 /// @nodoc

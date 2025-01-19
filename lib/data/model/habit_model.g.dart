@@ -18,7 +18,7 @@ class HabitAdapter extends TypeAdapter<Habit> {
     };
     return Habit(
       habit: fields[0] as String,
-      UID: fields[1] as String,
+      uid: fields[1] as String,
       dateStatus: (fields[2] as List).cast<DateStatus>(),
     );
   }
@@ -30,7 +30,7 @@ class HabitAdapter extends TypeAdapter<Habit> {
       ..writeByte(0)
       ..write(obj.habit)
       ..writeByte(1)
-      ..write(obj.UID)
+      ..write(obj.uid)
       ..writeByte(2)
       ..write(obj.dateStatus);
   }
@@ -52,7 +52,7 @@ class HabitAdapter extends TypeAdapter<Habit> {
 
 _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
       habit: json['habit'] as String,
-      UID: json['UID'] as String,
+      uid: json['uid'] as String,
       dateStatus: (json['dateStatus'] as List<dynamic>)
           .map((e) => DateStatus.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -61,6 +61,6 @@ _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
 Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
     <String, dynamic>{
       'habit': instance.habit,
-      'UID': instance.UID,
+      'uid': instance.uid,
       'dateStatus': instance.dateStatus,
     };

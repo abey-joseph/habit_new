@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_options.dart';
 import 'package:habit/core/hive/habit_hive_operation.dart';
@@ -24,6 +25,7 @@ void main(List<String> args) async {
       BlocProvider<HabitBloc>(
         create: (context) => HabitBloc()..add(HabitEvent.fetchHabit()),
       ),
+      BlocProvider<CheckBoxBloc>(create: (context) => CheckBoxBloc()),
     ],
     child: HabitTracker(),
   ));

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/data/constant/habit_list_and_operation/habit_list_and_operation.dart';
 
 part 'habit_event.dart';
@@ -10,6 +11,13 @@ part 'habit_bloc.freezed.dart';
 
 class HabitBloc extends Bloc<HabitEvent, HabitState> {
   HabitBloc() : super(initial()) {
+    on<_RefreshHabit>(
+      (event, emit) {
+        emit(HabitState.loading());
+        emit(loaded(habits: habitList.toList()));
+      },
+    );
+
     on<_FetchHabit>((event, emit) async {
       emit(HabitState.loading());
 

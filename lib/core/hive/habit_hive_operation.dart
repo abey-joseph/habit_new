@@ -61,7 +61,7 @@ class HabitHiveOperation {
     var habitBox = _openBox();
     return Habit(
         habit: 'test',
-        UID: (locator<FirebaseAuthActions>().currentUser == null)
+        uid: (locator<FirebaseAuthActions>().currentUser == null)
             ? 'null'
             : locator<FirebaseAuthActions>().currentUser!.uid,
         dateStatus: []);

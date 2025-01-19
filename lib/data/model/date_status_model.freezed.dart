@@ -23,7 +23,7 @@ mixin _$DateStatus {
   @HiveField(0)
   DateTime get date => throw _privateConstructorUsedError;
   @HiveField(1)
-  bool? get isCompleted => throw _privateConstructorUsedError;
+  bool get isCompleted => throw _privateConstructorUsedError;
 
   /// Serializes this DateStatus to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $DateStatusCopyWith<$Res> {
           DateStatus value, $Res Function(DateStatus) then) =
       _$DateStatusCopyWithImpl<$Res, DateStatus>;
   @useResult
-  $Res call({@HiveField(0) DateTime date, @HiveField(1) bool? isCompleted});
+  $Res call({@HiveField(0) DateTime date, @HiveField(1) bool isCompleted});
 }
 
 /// @nodoc
@@ -60,17 +60,17 @@ class _$DateStatusCopyWithImpl<$Res, $Val extends DateStatus>
   @override
   $Res call({
     Object? date = null,
-    Object? isCompleted = freezed,
+    Object? isCompleted = null,
   }) {
     return _then(_value.copyWith(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isCompleted: freezed == isCompleted
+      isCompleted: null == isCompleted
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ) as $Val);
   }
 }
@@ -83,7 +83,7 @@ abstract class _$$DateStatusImplCopyWith<$Res>
       __$$DateStatusImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@HiveField(0) DateTime date, @HiveField(1) bool? isCompleted});
+  $Res call({@HiveField(0) DateTime date, @HiveField(1) bool isCompleted});
 }
 
 /// @nodoc
@@ -100,17 +100,17 @@ class __$$DateStatusImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? date = null,
-    Object? isCompleted = freezed,
+    Object? isCompleted = null,
   }) {
     return _then(_$DateStatusImpl(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isCompleted: freezed == isCompleted
+      isCompleted: null == isCompleted
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -119,7 +119,8 @@ class __$$DateStatusImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DateStatusImpl implements _DateStatus {
   const _$DateStatusImpl(
-      {@HiveField(0) required this.date, @HiveField(1) this.isCompleted});
+      {@HiveField(0) required this.date,
+      @HiveField(1) required this.isCompleted});
 
   factory _$DateStatusImpl.fromJson(Map<String, dynamic> json) =>
       _$$DateStatusImplFromJson(json);
@@ -129,7 +130,7 @@ class _$DateStatusImpl implements _DateStatus {
   final DateTime date;
   @override
   @HiveField(1)
-  final bool? isCompleted;
+  final bool isCompleted;
 
   @override
   String toString() {
@@ -169,7 +170,7 @@ class _$DateStatusImpl implements _DateStatus {
 abstract class _DateStatus implements DateStatus {
   const factory _DateStatus(
       {@HiveField(0) required final DateTime date,
-      @HiveField(1) final bool? isCompleted}) = _$DateStatusImpl;
+      @HiveField(1) required final bool isCompleted}) = _$DateStatusImpl;
 
   factory _DateStatus.fromJson(Map<String, dynamic> json) =
       _$DateStatusImpl.fromJson;
@@ -179,7 +180,7 @@ abstract class _DateStatus implements DateStatus {
   DateTime get date;
   @override
   @HiveField(1)
-  bool? get isCompleted;
+  bool get isCompleted;
 
   /// Create a copy of DateStatus
   /// with the given fields replaced by the non-null parameter values.

@@ -7,4 +7,5 @@ class HabitEvent with _$HabitEvent {
   const factory HabitEvent.deleteHabit({required int index}) = _DeleteHabit;
   const factory HabitEvent.editHabit(
       {required int index, required String habitName}) = _EditHabit;
+  const factory HabitEvent.refreshHabit() = _RefreshHabit;
 }

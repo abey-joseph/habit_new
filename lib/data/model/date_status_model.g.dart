@@ -18,7 +18,7 @@ class DateStatusAdapter extends TypeAdapter<DateStatus> {
     };
     return DateStatus(
       date: fields[0] as DateTime,
-      isCompleted: fields[1] as bool?,
+      isCompleted: fields[1] as bool,
     );
   }
 
@@ -50,7 +50,7 @@ class DateStatusAdapter extends TypeAdapter<DateStatus> {
 _$DateStatusImpl _$$DateStatusImplFromJson(Map<String, dynamic> json) =>
     _$DateStatusImpl(
       date: DateTime.parse(json['date'] as String),
-      isCompleted: json['isCompleted'] as bool?,
+      isCompleted: json['isCompleted'] as bool,
     );
 
 Map<String, dynamic> _$$DateStatusImplToJson(_$DateStatusImpl instance) =>
