@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:habit/core/hive/habit_hive_operation.dart';
+import 'package:habit/data/constant/habit_list_and_operation/habit_list_and_operation.dart';
+import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/data/model/habit_model.dart';
 
 List<List<bool>> checkBoxList = [];
@@ -48,6 +51,13 @@ fillingDataToCheckBoxList(List<Habit> list) {
   }
 }
 
-changeDataInCheckBoxList(int row, int column, bool value) {
+changeDataInCheckBoxList(int row, int column, bool value) async {
+  //save data in local list
   checkBoxList[row][column] = value;
+
+  //save in hive
+  String output = await locator<HabitHiveOperation>()
+      .editHabitDateStatus(row, column, value);
+
+  log(output);
 }

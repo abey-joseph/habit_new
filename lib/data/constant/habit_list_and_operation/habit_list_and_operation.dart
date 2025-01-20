@@ -2,6 +2,7 @@ import 'package:habit/core/firebase/firebase_auth_actions.dart';
 import 'package:habit/core/hive/habit_hive_operation.dart';
 import 'package:habit/data/constant/habit_status_list_and_operations/habit_status_list_and_operations.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
+import 'package:habit/data/model/date_status_model.dart';
 import 'package:habit/data/model/habit_model.dart';
 
 List<String> habitList = [];
@@ -26,13 +27,19 @@ Future<List<String>> getHabitNameList() async {
 }
 
 Future<String> addHabit(String habitName) async {
+  DateTime today = DateTime.now();
+
   //vconvert to Habit class
   Habit habit = Habit(
       habit: habitName,
       uid: (locator<FirebaseAuthActions>().currentUser == null)
           ? 'null'
           : locator<FirebaseAuthActions>().currentUser!.uid,
-      dateStatus: []);
+      dateStatus: List.generate(
+          5,
+          (index) => DateStatus(
+              date: today.subtract(Duration(days: index)),
+              isCompleted: false)));
 
   //add and get oupput
   String output = await locator<HabitHiveOperation>().addHabit(habit);
@@ -43,10 +50,10 @@ Future<String> addHabit(String habitName) async {
   return output;
 }
 
-Future<String> editHabit(int index, String habitName) async {
+Future<String> editHabitName(int index, String habitName) async {
   //edit and get oupput
   String output =
-      await locator<HabitHiveOperation>().editHabit(index, habitName);
+      await locator<HabitHiveOperation>().editHabitName(index, habitName);
 
   //retrive data from hive to habitList to make similar changes in local list also
   habitList = await getHabitNameList();

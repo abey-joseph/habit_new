@@ -9,4 +9,12 @@ but if login using the same account then can show
 also if the user login with a diff account the old data can be deleted
 
 
+*** PENDING ADD HIVE FOR EDIT DATA (also need to include the check box data also)
 
+*** need to make a fucntion which will check if the current date and last entry date of each habit if it is empty
+- then fill up with data put complettion status as empty
+
+
+////// need make the bloc more efficent 
+ - i have an idea like the main bloc have some more states where one state trigger when there is a change in the length of habit lidt
+ - other one will trigger for all the other case when needed a refresh but only the minumum widgets will be depend on it - or only the needed one will be the reloaded

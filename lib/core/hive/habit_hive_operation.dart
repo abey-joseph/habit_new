@@ -33,15 +33,47 @@ class HabitHiveOperation {
     }
   }
 
-  Future<String> editHabit(int index, String habitName) async {
+  Future<String> editHabitName(int index, String habitName) async {
     try {
       var habitBox = _openBox();
       habitBox.putAt(
           index,
-          (habitBox.getAt(index) == null)
+          (habitBox.getAt(index) != null)
               ? habitBox.getAt(index)!.copyWith(habit: habitName)
               : throw ('cannot edit due to index not avaialable'));
       return 'Edit Succes';
+    } catch (e) {
+      return e.toString();
+    }
+  }
+
+  Future<String> editHabitDateStatus(
+      int index, int column, bool isCompleted) async {
+    try {
+      var habitBox = _openBox();
+
+      //log("started saving");
+      List<DateStatus> dateStatusList = [];
+
+      try {
+        dateStatusList = habitBox.getAt(index)!.dateStatus.toList();
+
+        DateStatus dateStatus = habitBox
+            .getAt(index)!
+            .dateStatus[column]
+            .copyWith(isCompleted: isCompleted);
+
+        dateStatusList[column] = dateStatus;
+      } catch (e) {
+        rethrow;
+      }
+
+      habitBox.putAt(
+          index,
+          (habitBox.getAt(index) != null)
+              ? habitBox.getAt(index)!.copyWith(dateStatus: dateStatusList)
+              : throw ('cannot edit dateStatus due to index not avaialable'));
+      return 'Edit Date Status Succes';
     } catch (e) {
       return e.toString();
     }
