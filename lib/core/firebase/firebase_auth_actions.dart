@@ -1,14 +1,31 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:habit/core/firebase/firebase_options.dart';
 
 class FirebaseAuthActions {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth? _auth;
 
-  User? get currentUser => _auth.currentUser;
+  Future<String> initialize() async {
+    try {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      _auth = FirebaseAuth.instance;
+
+      return 'Firebase Initialized';
+    } catch (e) {
+      return 'Firebase Initialization failed';
+    }
+  }
+
+  User? get currentUser => _auth!.currentUser;
 
   Future<String> logInUserWithEmailAndPass(
       {required String email, required String password}) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth!.signInWithEmailAndPassword(email: email, password: password);
       return "login Success";
     } on FirebaseAuthException catch (e) {
       return handleAuthException(e);
@@ -20,8 +37,8 @@ class FirebaseAuthActions {
   Future<String> signInUserWithEmailAndPass(
       {required String email, required String password}) async {
     try {
-      await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      await _auth!
+          .createUserWithEmailAndPassword(email: email, password: password);
       return "Sign Up Success";
     } on FirebaseAuthException catch (e) {
       return handleAuthException(e);
@@ -31,7 +48,7 @@ class FirebaseAuthActions {
   }
 
   signout() async {
-    await _auth.signOut();
+    await _auth!.signOut();
   }
 }
 

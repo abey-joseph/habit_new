@@ -4,8 +4,8 @@ import 'package:habit/core/hive/habit_hive_operation.dart';
 
 final locator = GetIt.instance;
 
-void setupDependencies() {
+void setupDependencies() async {
   locator.registerLazySingleton<HabitHiveOperation>(() => HabitHiveOperation());
-  locator
-      .registerLazySingleton<FirebaseAuthActions>(() => FirebaseAuthActions());
+  locator.registerSingleton<FirebaseAuthActions>(FirebaseAuthActions());
+  await locator.allReady();
 }

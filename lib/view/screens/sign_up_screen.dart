@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
+import 'package:habit/core/hive/habit_hive_operation.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/view/screens/home_screen.dart';
 import 'package:habit/view/widgets/global/login_screen_buttons.dart';
@@ -56,6 +59,9 @@ class SignUpScreen extends StatelessWidget {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(loginOutput)));
 
+              context.read<HabitBloc>().add(HabitEvent.fetchHabit());
+
+              if (!context.mounted) return;
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
                     builder: (context) =>

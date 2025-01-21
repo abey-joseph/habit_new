@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
+import 'package:habit/core/hive/habit_hive_operation.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/view/screens/intro_screen.dart';
 import 'package:habit/view/screens/settings_screen.dart';
@@ -43,6 +44,7 @@ class HomeScreen extends StatelessWidget {
                     showDialog(
                         context: context,
                         builder: (context) => CustomInputDialog(
+                            habitName: '',
                             isAdd: true,
                             buttonText: 'Add',
                             onCancel: () {},
@@ -58,6 +60,10 @@ class HomeScreen extends StatelessWidget {
                   )),
               IconButton(
                   onPressed: () {
+                    locator<HabitHiveOperation>().isOpenBoxFirstTime = true;
+
+                    locator<HabitHiveOperation>().closeBox();
+
                     locator<FirebaseAuthActions>().signout();
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(

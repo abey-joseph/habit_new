@@ -5,15 +5,15 @@ class CustomInputDialog extends StatefulWidget {
   final ValueChanged<String> onAddOrEdit;
   final String buttonText;
   final bool isAdd;
-  String? habitName;
+  final String? habitName;
 
-  CustomInputDialog(
+  const CustomInputDialog(
       {super.key,
       required this.onCancel,
       required this.onAddOrEdit,
       required this.buttonText,
       required this.isAdd,
-      this.habitName});
+      required this.habitName});
 
   @override
   CustomInputDialogState createState() => CustomInputDialogState();

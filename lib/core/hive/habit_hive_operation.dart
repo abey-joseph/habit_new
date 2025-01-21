@@ -9,6 +9,8 @@ import 'package:habit/data/model/habit_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HabitHiveOperation {
+  bool isOpenBoxFirstTime = true;
+
   inItHive() async {
     await Hive.initFlutter();
 
@@ -16,16 +18,19 @@ class HabitHiveOperation {
     Hive.registerAdapter(DateStatusAdapter());
     Hive.registerAdapter(HabitAdapter());
 
-    await Hive.openBox<Habit>('habit');
+    //await Hive.openBox<Habit>(locator<FirebaseAuthActions>().currentUser!.uid);
   }
 
-  Box<Habit> _openBox() {
-    return Hive.box<Habit>('habit');
+  Future<Box<Habit>> _openBox() async {
+    log("opeing a new box with ${locator<FirebaseAuthActions>().currentUser!.uid}");
+
+    return await Hive.openBox<Habit>(
+        locator<FirebaseAuthActions>().currentUser!.uid);
   }
 
   Future<String> addHabit(Habit habit) async {
     try {
-      var habitBox = _openBox();
+      var habitBox = await _openBox();
       habitBox.add(habit);
       return 'Add Succes';
     } catch (e) {
@@ -35,7 +40,7 @@ class HabitHiveOperation {
 
   Future<String> editHabitName(int index, String habitName) async {
     try {
-      var habitBox = _openBox();
+      var habitBox = await _openBox();
       habitBox.putAt(
           index,
           (habitBox.getAt(index) != null)
@@ -50,7 +55,7 @@ class HabitHiveOperation {
   Future<String> editHabitDateStatus(
       int index, int column, bool isCompleted) async {
     try {
-      var habitBox = _openBox();
+      var habitBox = await _openBox();
 
       //log("started saving");
       List<DateStatus> dateStatusList = [];
@@ -81,7 +86,7 @@ class HabitHiveOperation {
 
   Future<String> deletehabit(int index) async {
     try {
-      var habitBox = _openBox();
+      var habitBox = await _openBox();
       habitBox.deleteAt(index);
       return 'delete succes';
     } catch (e) {
@@ -101,7 +106,7 @@ class HabitHiveOperation {
 
   Future<List<Habit>> getAllHabit() async {
     try {
-      var habitBox = _openBox();
+      var habitBox = await _openBox();
       return habitBox.values.toList();
     } on HiveError catch (e) {
       log("hive error while trying to fetch all data - ${e.toString()}");
@@ -113,7 +118,8 @@ class HabitHiveOperation {
   }
 
   Future<String> closeBox() async {
-    var habitBox = _openBox();
+    var habitBox = await _openBox();
+    habitBox.close();
     return 'close succes';
   }
 }
