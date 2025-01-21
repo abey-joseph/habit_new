@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/view/screens/detail_screen.dart';
+import 'package:habit/view/widgets/dialog/add_dialog.dart';
 
 class ListviewTile extends StatelessWidget {
   final String habitName;
@@ -27,7 +28,23 @@ class ListviewTile extends StatelessWidget {
                         .read<HabitBloc>()
                         .add(HabitEvent.deleteHabit(index: index));
                   }),
-              SlidableAction(icon: Icons.edit, onPressed: (context) {}),
+              SlidableAction(
+                  icon: Icons.edit,
+                  onPressed: (context) {
+                    showDialog(
+                        context: context,
+                        builder: (context) => CustomInputDialog(
+                              onCancel: () {},
+                              onAddOrEdit: (value) {
+                                context.read<HabitBloc>().add(
+                                    HabitEvent.editHabit(
+                                        index: index, habitName: value));
+                              },
+                              buttonText: "Edit",
+                              isAdd: false,
+                              habitName: habitName,
+                            ));
+                  }),
             ]),
         child: Container(
           color: Color.fromRGBO(247, 247, 247, 1),

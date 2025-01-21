@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 
 class CustomInputDialog extends StatefulWidget {
   final VoidCallback onCancel;
-  final ValueChanged<String> onAdd;
+  final ValueChanged<String> onAddOrEdit;
   final String buttonText;
+  final bool isAdd;
+  String? habitName;
 
-  const CustomInputDialog({
-    super.key,
-    required this.onCancel,
-    required this.onAdd,
-    required this.buttonText,
-  });
+  CustomInputDialog(
+      {super.key,
+      required this.onCancel,
+      required this.onAddOrEdit,
+      required this.buttonText,
+      required this.isAdd,
+      this.habitName});
 
   @override
   CustomInputDialogState createState() => CustomInputDialogState();
@@ -21,6 +24,9 @@ class CustomInputDialogState extends State<CustomInputDialog> {
 
   @override
   Widget build(BuildContext context) {
+    if (!widget.isAdd) {
+      _textController.text = widget.habitName!;
+    }
     return AlertDialog(
       title: const Text('Add Habit'),
       content: TextField(
@@ -40,7 +46,7 @@ class CustomInputDialogState extends State<CustomInputDialog> {
         ElevatedButton(
           onPressed: () {
             String inputValue = _textController.text.trim();
-            widget.onAdd(inputValue); // Pass the input value
+            widget.onAddOrEdit(inputValue); // Pass the input value
             Navigator.of(context).pop();
           },
           child: Text(widget.buttonText),

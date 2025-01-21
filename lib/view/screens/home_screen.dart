@@ -43,9 +43,10 @@ class HomeScreen extends StatelessWidget {
                     showDialog(
                         context: context,
                         builder: (context) => CustomInputDialog(
+                            isAdd: true,
                             buttonText: 'Add',
                             onCancel: () {},
-                            onAdd: (value) {
+                            onAddOrEdit: (value) {
                               context
                                   .read<HabitBloc>()
                                   .add(HabitEvent.addHabit(habitName: value));
