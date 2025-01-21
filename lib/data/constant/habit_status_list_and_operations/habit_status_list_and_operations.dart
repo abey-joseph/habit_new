@@ -1,7 +1,5 @@
 import 'dart:developer';
-
 import 'package:habit/core/hive/habit_hive_operation.dart';
-import 'package:habit/data/constant/habit_list_and_operation/habit_list_and_operation.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/data/model/habit_model.dart';
 

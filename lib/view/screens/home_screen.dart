@@ -8,6 +8,7 @@ import 'package:habit/core/firebase/firebase_auth_actions.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
 import 'package:habit/view/screens/intro_screen.dart';
 import 'package:habit/view/screens/settings_screen.dart';
+import 'package:habit/view/widgets/dialog/add_dialog.dart';
 import 'package:habit/view/widgets/global/date_row_widget.dart';
 import 'package:habit/view/widgets/home_screen/listview_tile.dart';
 
@@ -39,9 +40,16 @@ class HomeScreen extends StatelessWidget {
                   )),
               IconButton(
                   onPressed: () {
-                    context
-                        .read<HabitBloc>()
-                        .add(HabitEvent.addHabit(habitName: 'Habit'));
+                    showDialog(
+                        context: context,
+                        builder: (context) => CustomInputDialog(
+                            buttonText: 'Add',
+                            onCancel: () {},
+                            onAdd: (value) {
+                              context
+                                  .read<HabitBloc>()
+                                  .add(HabitEvent.addHabit(habitName: value));
+                            }));
                   },
                   icon: Icon(
                     Icons.add_circle,

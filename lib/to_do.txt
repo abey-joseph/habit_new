@@ -14,6 +14,8 @@ also if the user login with a diff account the old data can be deleted
 *** need to make a fucntion which will check if the current date and last entry date of each habit if it is empty
 - then fill up with data put complettion status as empty
 
+-- make sure the data is shown to the correct user
+
 
 ////// need make the bloc more efficent 
  - i have an idea like the main bloc have some more states where one state trigger when there is a change in the length of habit lidt
