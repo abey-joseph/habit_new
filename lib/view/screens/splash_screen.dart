@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
@@ -32,6 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (user != null) {
         if (!mounted) return;
         context.read<HabitBloc>().add(HabitEvent.fetchHabit());
+        //Fluttertoast.showToast(msg: 'new event triggerd in CheckBoxBloc');
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const HomeScreen()),
         );

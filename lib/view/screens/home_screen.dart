@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
@@ -19,7 +20,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<HabitBloc, HabitState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is loaded) {
           context.read<CheckBoxBloc>().add(refreshCheckBox());
         }

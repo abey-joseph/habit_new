@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/view/screens/detail_screen.dart';
@@ -94,6 +95,10 @@ class ListviewTile extends StatelessWidget {
                   } else if (state is checkBoxerror) {
                     return Text("error");
                   } else {
+                    context
+                        .read<CheckBoxBloc>()
+                        .add(CheckBoxEvent.refreshCheckBox());
+
                     return Text('Loading...');
                   }
                 },
