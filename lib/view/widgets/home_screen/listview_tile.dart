@@ -91,6 +91,8 @@ class ListviewTile extends StatelessWidget {
                         ],
                       ),
                     );
+                  } else if (state is checkBoxerror) {
+                    return Text("error");
                   } else {
                     return Text('Loading...');
                   }

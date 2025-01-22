@@ -9,8 +9,6 @@ import 'package:habit/data/model/habit_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HabitHiveOperation {
-  bool isOpenBoxFirstTime = true;
-
   inItHive() async {
     await Hive.initFlutter();
 
@@ -22,10 +20,14 @@ class HabitHiveOperation {
   }
 
   Future<Box<Habit>> _openBox() async {
-    log("opeing a new box with ${locator<FirebaseAuthActions>().currentUser!.uid}");
+    // check if the box is open then habitBox.open otherwise habitBox.openBox
 
-    return await Hive.openBox<Habit>(
-        locator<FirebaseAuthActions>().currentUser!.uid);
+    if (Hive.isBoxOpen(locator<FirebaseAuthActions>().currentUser!.uid)) {
+      return Hive.box<Habit>(locator<FirebaseAuthActions>().currentUser!.uid);
+    } else {
+      return await Hive.openBox<Habit>(
+          locator<FirebaseAuthActions>().currentUser!.uid);
+    }
   }
 
   Future<String> addHabit(Habit habit) async {
@@ -118,8 +120,7 @@ class HabitHiveOperation {
   }
 
   Future<String> closeBox() async {
-    var habitBox = await _openBox();
-    habitBox.close();
+    Hive.close();
     return 'close succes';
   }
 }

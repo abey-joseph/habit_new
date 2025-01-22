@@ -60,8 +60,6 @@ class HomeScreen extends StatelessWidget {
                   )),
               IconButton(
                   onPressed: () {
-                    locator<HabitHiveOperation>().isOpenBoxFirstTime = true;
-
                     locator<HabitHiveOperation>().closeBox();
 
                     locator<FirebaseAuthActions>().signout();

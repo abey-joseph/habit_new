@@ -1,8 +1,8 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:habit/core/firebase/firebase_options.dart';
+import 'package:habit/core/shared_preferences/prefs.dart';
+import 'package:habit/data/dependencies/get_it_dependencies.dart';
 
 class FirebaseAuthActions {
   FirebaseAuth? _auth;
@@ -26,6 +26,10 @@ class FirebaseAuthActions {
       {required String email, required String password}) async {
     try {
       await _auth!.signInWithEmailAndPassword(email: email, password: password);
+
+      //indicate in share prefeerene that app is log in state
+      locator<Prefs>().logIn();
+
       return "login Success";
     } on FirebaseAuthException catch (e) {
       return handleAuthException(e);
@@ -39,6 +43,10 @@ class FirebaseAuthActions {
     try {
       await _auth!
           .createUserWithEmailAndPassword(email: email, password: password);
+
+      //indicate in share prefeerene that app is log in state
+      locator<Prefs>().logIn();
+
       return "Sign Up Success";
     } on FirebaseAuthException catch (e) {
       return handleAuthException(e);
@@ -48,6 +56,9 @@ class FirebaseAuthActions {
   }
 
   signout() async {
+    //indicate in share prefeerene that app is log out state
+    locator<Prefs>().logOut();
+
     await _auth!.signOut();
   }
 }

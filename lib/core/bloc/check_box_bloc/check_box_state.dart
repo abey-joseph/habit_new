@@ -6,5 +6,5 @@ class CheckBoxState with _$CheckBoxState {
   const factory CheckBoxState.loading() = checkBoxloading;
   const factory CheckBoxState.loaded({required List<List<bool>> checkList}) =
       checkBoxloaded;
-  const factory CheckBoxState.error() = checkBoxerror;
+  const factory CheckBoxState.error({required String e}) = checkBoxerror;
 }

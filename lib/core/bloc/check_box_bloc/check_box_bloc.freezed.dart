@@ -352,7 +352,7 @@ mixin _$CheckBoxState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<List<bool>> checkList) loaded,
-    required TResult Function() error,
+    required TResult Function(String e) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -360,7 +360,7 @@ mixin _$CheckBoxState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<List<bool>> checkList)? loaded,
-    TResult? Function()? error,
+    TResult? Function(String e)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -368,7 +368,7 @@ mixin _$CheckBoxState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<List<bool>> checkList)? loaded,
-    TResult Function()? error,
+    TResult Function(String e)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -464,7 +464,7 @@ class _$checkBoxinitialImpl implements checkBoxinitial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<List<bool>> checkList) loaded,
-    required TResult Function() error,
+    required TResult Function(String e) error,
   }) {
     return initial();
   }
@@ -475,7 +475,7 @@ class _$checkBoxinitialImpl implements checkBoxinitial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<List<bool>> checkList)? loaded,
-    TResult? Function()? error,
+    TResult? Function(String e)? error,
   }) {
     return initial?.call();
   }
@@ -486,7 +486,7 @@ class _$checkBoxinitialImpl implements checkBoxinitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<List<bool>> checkList)? loaded,
-    TResult Function()? error,
+    TResult Function(String e)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -581,7 +581,7 @@ class _$checkBoxloadingImpl implements checkBoxloading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<List<bool>> checkList) loaded,
-    required TResult Function() error,
+    required TResult Function(String e) error,
   }) {
     return loading();
   }
@@ -592,7 +592,7 @@ class _$checkBoxloadingImpl implements checkBoxloading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<List<bool>> checkList)? loaded,
-    TResult? Function()? error,
+    TResult? Function(String e)? error,
   }) {
     return loading?.call();
   }
@@ -603,7 +603,7 @@ class _$checkBoxloadingImpl implements checkBoxloading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<List<bool>> checkList)? loaded,
-    TResult Function()? error,
+    TResult Function(String e)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -734,7 +734,7 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<List<bool>> checkList) loaded,
-    required TResult Function() error,
+    required TResult Function(String e) error,
   }) {
     return loaded(checkList);
   }
@@ -745,7 +745,7 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<List<bool>> checkList)? loaded,
-    TResult? Function()? error,
+    TResult? Function(String e)? error,
   }) {
     return loaded?.call(checkList);
   }
@@ -756,7 +756,7 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<List<bool>> checkList)? loaded,
-    TResult Function()? error,
+    TResult Function(String e)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -821,6 +821,8 @@ abstract class _$$checkBoxerrorImplCopyWith<$Res> {
   factory _$$checkBoxerrorImplCopyWith(
           _$checkBoxerrorImpl value, $Res Function(_$checkBoxerrorImpl) then) =
       __$$checkBoxerrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String e});
 }
 
 /// @nodoc
@@ -833,26 +835,51 @@ class __$$checkBoxerrorImplCopyWithImpl<$Res>
 
   /// Create a copy of CheckBoxState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? e = null,
+  }) {
+    return _then(_$checkBoxerrorImpl(
+      e: null == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$checkBoxerrorImpl implements checkBoxerror {
-  const _$checkBoxerrorImpl();
+  const _$checkBoxerrorImpl({required this.e});
+
+  @override
+  final String e;
 
   @override
   String toString() {
-    return 'CheckBoxState.error()';
+    return 'CheckBoxState.error(e: $e)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$checkBoxerrorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$checkBoxerrorImpl &&
+            (identical(other.e, e) || other.e == e));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, e);
+
+  /// Create a copy of CheckBoxState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$checkBoxerrorImplCopyWith<_$checkBoxerrorImpl> get copyWith =>
+      __$$checkBoxerrorImplCopyWithImpl<_$checkBoxerrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -860,9 +887,9 @@ class _$checkBoxerrorImpl implements checkBoxerror {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<List<bool>> checkList) loaded,
-    required TResult Function() error,
+    required TResult Function(String e) error,
   }) {
-    return error();
+    return error(e);
   }
 
   @override
@@ -871,9 +898,9 @@ class _$checkBoxerrorImpl implements checkBoxerror {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<List<bool>> checkList)? loaded,
-    TResult? Function()? error,
+    TResult? Function(String e)? error,
   }) {
-    return error?.call();
+    return error?.call(e);
   }
 
   @override
@@ -882,11 +909,11 @@ class _$checkBoxerrorImpl implements checkBoxerror {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<List<bool>> checkList)? loaded,
-    TResult Function()? error,
+    TResult Function(String e)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(e);
     }
     return orElse();
   }
@@ -930,5 +957,13 @@ class _$checkBoxerrorImpl implements checkBoxerror {
 }
 
 abstract class checkBoxerror implements CheckBoxState {
-  const factory checkBoxerror() = _$checkBoxerrorImpl;
+  const factory checkBoxerror({required final String e}) = _$checkBoxerrorImpl;
+
+  String get e;
+
+  /// Create a copy of CheckBoxState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$checkBoxerrorImplCopyWith<_$checkBoxerrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

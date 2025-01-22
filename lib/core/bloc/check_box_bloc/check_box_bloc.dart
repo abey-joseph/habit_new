@@ -9,7 +9,11 @@ part 'check_box_bloc.freezed.dart';
 class CheckBoxBloc extends Bloc<CheckBoxEvent, CheckBoxState> {
   CheckBoxBloc() : super(checkBoxinitial()) {
     on<refreshCheckBox>((event, emit) {
-      emit(checkBoxloaded(checkList: checkBoxList.toList()));
+      try {
+        emit(checkBoxloaded(checkList: checkBoxList.toList()));
+      } catch (e) {
+        emit(CheckBoxState.error(e: e.toString()));
+      }
     });
     on<toggleCheckBox>(
       (event, emit) {
