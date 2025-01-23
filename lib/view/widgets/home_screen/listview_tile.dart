@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/view/screens/detail_screen.dart';
@@ -63,17 +64,30 @@ class ListviewTile extends StatelessWidget {
                         },
                         child: Text(habitName)),
                   )),
-              BlocBuilder<CheckBoxBloc, CheckBoxState>(
-                builder: (context, state) {
-                  if (state is checkBoxloaded) {
-                    return SizedBox(
-                      width: 250,
-                      child: Row(
-                        children: [
-                          for (int columnIndex = 0;
-                              columnIndex < state.checkList[index].length;
-                              columnIndex++)
-                            Checkbox(
+              SizedBox(
+                width: 250,
+                child: Row(
+                  children: [
+                    for (int columnIndex = 0; columnIndex < 5; columnIndex++)
+                      BlocConsumer<CheckBoxBloc, CheckBoxState>(
+                        buildWhen: (previous, current) {
+                          if (current is checkBoxloaded &&
+                              previous is checkBoxloaded) {
+                            if (current.checkList[index][columnIndex] !=
+                                previous.checkList[index][columnIndex]) {
+                              return true;
+                            } else {
+                              return false;
+                            }
+                          } else {
+                            return false;
+                          }
+                        },
+                        listener: (context, state) {},
+                        builder: (context, state) {
+                          if (state is checkBoxloaded) {
+                            log("rebuild widget at row $index and column $columnIndex");
+                            return Checkbox(
                               value: state.checkList[index][columnIndex],
                               onChanged: (value) {
                                 context.read<CheckBoxBloc>().add(
@@ -84,24 +98,18 @@ class ListviewTile extends StatelessWidget {
                                         column: columnIndex, // Current column
                                       ),
                                     );
-                                context
-                                    .read<HabitBloc>()
-                                    .add(HabitEvent.refreshHabit());
+                                // context
+                                //     .read<HabitBloc>()
+                                //     .add(HabitEvent.refreshHabit());
                               },
-                            )
-                        ],
-                      ),
-                    );
-                  } else if (state is checkBoxerror) {
-                    return Text("error");
-                  } else {
-                    context
-                        .read<CheckBoxBloc>()
-                        .add(CheckBoxEvent.refreshCheckBox());
-
-                    return Text('Loading...');
-                  }
-                },
+                            );
+                          } else {
+                            return SizedBox();
+                          }
+                        },
+                      )
+                  ],
+                ),
               )
             ],
           ),

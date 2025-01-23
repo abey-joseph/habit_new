@@ -36,7 +36,8 @@ void main(List<String> args) async {
         BlocProvider<HabitBloc>(
           create: (context) => HabitBloc()..add(HabitEvent.fetchHabit()),
         ),
-        BlocProvider<CheckBoxBloc>(create: (context) => CheckBoxBloc()),
+        BlocProvider<CheckBoxBloc>(
+            create: (context) => locator<CheckBoxBloc>()),
       ],
       child: HabitTracker(),
     ));

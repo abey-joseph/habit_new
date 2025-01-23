@@ -51,11 +51,11 @@ fillingDataToCheckBoxList(List<Habit> list) {
 
 changeDataInCheckBoxList(int row, int column, bool value) async {
   //save data in local list
-  checkBoxList[row][column] = value;
+  checkBoxList[row][column] = !checkBoxList[row][column];
 
   //save in hive
   String output = await locator<HabitHiveOperation>()
-      .editHabitDateStatus(row, column, value);
+      .editHabitDateStatus(row, column, checkBoxList[row][column]);
 
   log(output);
 }

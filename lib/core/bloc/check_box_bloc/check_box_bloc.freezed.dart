@@ -351,7 +351,7 @@ mixin _$CheckBoxState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<List<bool>> checkList) loaded,
+    required TResult Function(List<List<bool>> checkList, int hash) loaded,
     required TResult Function(String e) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -359,7 +359,7 @@ mixin _$CheckBoxState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<List<bool>> checkList)? loaded,
+    TResult? Function(List<List<bool>> checkList, int hash)? loaded,
     TResult? Function(String e)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -367,7 +367,7 @@ mixin _$CheckBoxState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<List<bool>> checkList)? loaded,
+    TResult Function(List<List<bool>> checkList, int hash)? loaded,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) =>
@@ -463,7 +463,7 @@ class _$checkBoxinitialImpl implements checkBoxinitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<List<bool>> checkList) loaded,
+    required TResult Function(List<List<bool>> checkList, int hash) loaded,
     required TResult Function(String e) error,
   }) {
     return initial();
@@ -474,7 +474,7 @@ class _$checkBoxinitialImpl implements checkBoxinitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<List<bool>> checkList)? loaded,
+    TResult? Function(List<List<bool>> checkList, int hash)? loaded,
     TResult? Function(String e)? error,
   }) {
     return initial?.call();
@@ -485,7 +485,7 @@ class _$checkBoxinitialImpl implements checkBoxinitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<List<bool>> checkList)? loaded,
+    TResult Function(List<List<bool>> checkList, int hash)? loaded,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) {
@@ -580,7 +580,7 @@ class _$checkBoxloadingImpl implements checkBoxloading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<List<bool>> checkList) loaded,
+    required TResult Function(List<List<bool>> checkList, int hash) loaded,
     required TResult Function(String e) error,
   }) {
     return loading();
@@ -591,7 +591,7 @@ class _$checkBoxloadingImpl implements checkBoxloading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<List<bool>> checkList)? loaded,
+    TResult? Function(List<List<bool>> checkList, int hash)? loaded,
     TResult? Function(String e)? error,
   }) {
     return loading?.call();
@@ -602,7 +602,7 @@ class _$checkBoxloadingImpl implements checkBoxloading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<List<bool>> checkList)? loaded,
+    TResult Function(List<List<bool>> checkList, int hash)? loaded,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) {
@@ -660,7 +660,7 @@ abstract class _$$checkBoxloadedImplCopyWith<$Res> {
           $Res Function(_$checkBoxloadedImpl) then) =
       __$$checkBoxloadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<List<bool>> checkList});
+  $Res call({List<List<bool>> checkList, int hash});
 }
 
 /// @nodoc
@@ -677,12 +677,17 @@ class __$$checkBoxloadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? checkList = null,
+    Object? hash = null,
   }) {
     return _then(_$checkBoxloadedImpl(
       checkList: null == checkList
           ? _value._checkList
           : checkList // ignore: cast_nullable_to_non_nullable
               as List<List<bool>>,
+      hash: null == hash
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -690,7 +695,8 @@ class __$$checkBoxloadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$checkBoxloadedImpl implements checkBoxloaded {
-  const _$checkBoxloadedImpl({required final List<List<bool>> checkList})
+  const _$checkBoxloadedImpl(
+      {required final List<List<bool>> checkList, required this.hash})
       : _checkList = checkList;
 
   final List<List<bool>> _checkList;
@@ -702,8 +708,11 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
   }
 
   @override
+  final int hash;
+
+  @override
   String toString() {
-    return 'CheckBoxState.loaded(checkList: $checkList)';
+    return 'CheckBoxState.loaded(checkList: $checkList, hash: $hash)';
   }
 
   @override
@@ -712,12 +721,13 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
         (other.runtimeType == runtimeType &&
             other is _$checkBoxloadedImpl &&
             const DeepCollectionEquality()
-                .equals(other._checkList, _checkList));
+                .equals(other._checkList, _checkList) &&
+            (identical(other.hash, hash) || other.hash == hash));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_checkList));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_checkList), hash);
 
   /// Create a copy of CheckBoxState
   /// with the given fields replaced by the non-null parameter values.
@@ -733,10 +743,10 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<List<bool>> checkList) loaded,
+    required TResult Function(List<List<bool>> checkList, int hash) loaded,
     required TResult Function(String e) error,
   }) {
-    return loaded(checkList);
+    return loaded(checkList, hash);
   }
 
   @override
@@ -744,10 +754,10 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<List<bool>> checkList)? loaded,
+    TResult? Function(List<List<bool>> checkList, int hash)? loaded,
     TResult? Function(String e)? error,
   }) {
-    return loaded?.call(checkList);
+    return loaded?.call(checkList, hash);
   }
 
   @override
@@ -755,12 +765,12 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<List<bool>> checkList)? loaded,
+    TResult Function(List<List<bool>> checkList, int hash)? loaded,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(checkList);
+      return loaded(checkList, hash);
     }
     return orElse();
   }
@@ -804,10 +814,12 @@ class _$checkBoxloadedImpl implements checkBoxloaded {
 }
 
 abstract class checkBoxloaded implements CheckBoxState {
-  const factory checkBoxloaded({required final List<List<bool>> checkList}) =
-      _$checkBoxloadedImpl;
+  const factory checkBoxloaded(
+      {required final List<List<bool>> checkList,
+      required final int hash}) = _$checkBoxloadedImpl;
 
   List<List<bool>> get checkList;
+  int get hash;
 
   /// Create a copy of CheckBoxState
   /// with the given fields replaced by the non-null parameter values.
@@ -886,7 +898,7 @@ class _$checkBoxerrorImpl implements checkBoxerror {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<List<bool>> checkList) loaded,
+    required TResult Function(List<List<bool>> checkList, int hash) loaded,
     required TResult Function(String e) error,
   }) {
     return error(e);
@@ -897,7 +909,7 @@ class _$checkBoxerrorImpl implements checkBoxerror {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<List<bool>> checkList)? loaded,
+    TResult? Function(List<List<bool>> checkList, int hash)? loaded,
     TResult? Function(String e)? error,
   }) {
     return error?.call(e);
@@ -908,7 +920,7 @@ class _$checkBoxerrorImpl implements checkBoxerror {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<List<bool>> checkList)? loaded,
+    TResult Function(List<List<bool>> checkList, int hash)? loaded,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) {
