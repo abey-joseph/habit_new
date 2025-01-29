@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:habit/core/hive/habit_hive_operation.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
+import 'package:habit/data/model/date_status_model.dart';
 import 'package:habit/data/model/habit_model.dart';
 
 List<List<bool>> checkBoxList = [];
@@ -69,4 +70,60 @@ addNewColumnIfDateChanges(DateTime currentDate, DateTime lastEntryDate) async {
       .addEmptyColumnForDateStatus(daysFromLastEntry);
 
   //refilling data from the Hive to checkBoxList will be done from the Bloc
+}
+
+List<int> dateStatusToProgressChartList(List<DateStatus> list) {
+  List<int> progressList = [];
+  int progress = 0;
+  for (DateStatus item in list) {
+    if (item.isCompleted) {
+      progress = progress + 2;
+      progressList.add(progress);
+    } else {
+      if (progress != 0) {
+        progress = progress - 2;
+      }
+
+      progressList.add(progress);
+    }
+  }
+  return progressList;
+}
+
+List<DateStatus> fillDummydataInFrontForDateChart(
+    List<DateStatus> dateStatusList) {
+  DateTime firstDay = dateStatusList[0].date;
+  DateTime lastDay = dateStatusList[dateStatusList.length - 1].date;
+
+  int dayOfFirstDay = firstDay.weekday;
+  int dayOfLastDay = (lastDay.weekday == 7)
+      ? 1
+      : lastDay.weekday + 1; // to make sunday as 1 instead of 7
+  int daysToAddAtEnd = 7 - dayOfLastDay;
+
+  List<DateStatus> list = dateStatusList.toList();
+
+  try {
+    if (dayOfFirstDay != 7) {
+      for (var i = 1; i <= dayOfFirstDay; i++) {
+        list.insert(
+            0,
+            DateStatus(
+                date: firstDay.subtract(Duration(days: 1)),
+                isCompleted: false));
+        firstDay = list[0].date;
+      }
+    }
+
+    if (dayOfLastDay != 7) {
+      for (var i = 1; i <= daysToAddAtEnd; i++) {
+        list.add(DateStatus(
+            date: lastDay.add(Duration(days: i)), isCompleted: false));
+      }
+    }
+  } catch (e) {
+    log(e.toString());
+  }
+
+  return list;
 }

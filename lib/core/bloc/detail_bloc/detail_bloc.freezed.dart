@@ -330,7 +330,8 @@ mixin _$DetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingHabitDetail,
-    required TResult Function(Habit habit) loadedHabitDetail,
+    required TResult Function(Habit habit, List<int> listForProgressLineChart)
+        loadedHabitDetail,
     required TResult Function(String e) errorHabitDetail,
   }) =>
       throw _privateConstructorUsedError;
@@ -338,7 +339,8 @@ mixin _$DetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingHabitDetail,
-    TResult? Function(Habit habit)? loadedHabitDetail,
+    TResult? Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult? Function(String e)? errorHabitDetail,
   }) =>
       throw _privateConstructorUsedError;
@@ -346,7 +348,8 @@ mixin _$DetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingHabitDetail,
-    TResult Function(Habit habit)? loadedHabitDetail,
+    TResult Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult Function(String e)? errorHabitDetail,
     required TResult orElse(),
   }) =>
@@ -442,7 +445,8 @@ class _$initialDetailImpl implements initialDetail {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingHabitDetail,
-    required TResult Function(Habit habit) loadedHabitDetail,
+    required TResult Function(Habit habit, List<int> listForProgressLineChart)
+        loadedHabitDetail,
     required TResult Function(String e) errorHabitDetail,
   }) {
     return initial();
@@ -453,7 +457,8 @@ class _$initialDetailImpl implements initialDetail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingHabitDetail,
-    TResult? Function(Habit habit)? loadedHabitDetail,
+    TResult? Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult? Function(String e)? errorHabitDetail,
   }) {
     return initial?.call();
@@ -464,7 +469,8 @@ class _$initialDetailImpl implements initialDetail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingHabitDetail,
-    TResult Function(Habit habit)? loadedHabitDetail,
+    TResult Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult Function(String e)? errorHabitDetail,
     required TResult orElse(),
   }) {
@@ -559,7 +565,8 @@ class _$loadingHabitDetailImpl implements loadingHabitDetail {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingHabitDetail,
-    required TResult Function(Habit habit) loadedHabitDetail,
+    required TResult Function(Habit habit, List<int> listForProgressLineChart)
+        loadedHabitDetail,
     required TResult Function(String e) errorHabitDetail,
   }) {
     return loadingHabitDetail();
@@ -570,7 +577,8 @@ class _$loadingHabitDetailImpl implements loadingHabitDetail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingHabitDetail,
-    TResult? Function(Habit habit)? loadedHabitDetail,
+    TResult? Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult? Function(String e)? errorHabitDetail,
   }) {
     return loadingHabitDetail?.call();
@@ -581,7 +589,8 @@ class _$loadingHabitDetailImpl implements loadingHabitDetail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingHabitDetail,
-    TResult Function(Habit habit)? loadedHabitDetail,
+    TResult Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult Function(String e)? errorHabitDetail,
     required TResult orElse(),
   }) {
@@ -639,7 +648,7 @@ abstract class _$$loadedHabitDetailImplCopyWith<$Res> {
           $Res Function(_$loadedHabitDetailImpl) then) =
       __$$loadedHabitDetailImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Habit habit});
+  $Res call({Habit habit, List<int> listForProgressLineChart});
 
   $HabitCopyWith<$Res> get habit;
 }
@@ -658,12 +667,17 @@ class __$$loadedHabitDetailImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? habit = null,
+    Object? listForProgressLineChart = null,
   }) {
     return _then(_$loadedHabitDetailImpl(
       habit: null == habit
           ? _value.habit
           : habit // ignore: cast_nullable_to_non_nullable
               as Habit,
+      listForProgressLineChart: null == listForProgressLineChart
+          ? _value._listForProgressLineChart
+          : listForProgressLineChart // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 
@@ -681,14 +695,24 @@ class __$$loadedHabitDetailImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$loadedHabitDetailImpl implements loadedHabitDetail {
-  const _$loadedHabitDetailImpl({required this.habit});
+  const _$loadedHabitDetailImpl(
+      {required this.habit, required final List<int> listForProgressLineChart})
+      : _listForProgressLineChart = listForProgressLineChart;
 
   @override
   final Habit habit;
+  final List<int> _listForProgressLineChart;
+  @override
+  List<int> get listForProgressLineChart {
+    if (_listForProgressLineChart is EqualUnmodifiableListView)
+      return _listForProgressLineChart;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listForProgressLineChart);
+  }
 
   @override
   String toString() {
-    return 'DetailState.loadedHabitDetail(habit: $habit)';
+    return 'DetailState.loadedHabitDetail(habit: $habit, listForProgressLineChart: $listForProgressLineChart)';
   }
 
   @override
@@ -696,11 +720,14 @@ class _$loadedHabitDetailImpl implements loadedHabitDetail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$loadedHabitDetailImpl &&
-            (identical(other.habit, habit) || other.habit == habit));
+            (identical(other.habit, habit) || other.habit == habit) &&
+            const DeepCollectionEquality().equals(
+                other._listForProgressLineChart, _listForProgressLineChart));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, habit);
+  int get hashCode => Object.hash(runtimeType, habit,
+      const DeepCollectionEquality().hash(_listForProgressLineChart));
 
   /// Create a copy of DetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -716,10 +743,11 @@ class _$loadedHabitDetailImpl implements loadedHabitDetail {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingHabitDetail,
-    required TResult Function(Habit habit) loadedHabitDetail,
+    required TResult Function(Habit habit, List<int> listForProgressLineChart)
+        loadedHabitDetail,
     required TResult Function(String e) errorHabitDetail,
   }) {
-    return loadedHabitDetail(habit);
+    return loadedHabitDetail(habit, listForProgressLineChart);
   }
 
   @override
@@ -727,10 +755,11 @@ class _$loadedHabitDetailImpl implements loadedHabitDetail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingHabitDetail,
-    TResult? Function(Habit habit)? loadedHabitDetail,
+    TResult? Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult? Function(String e)? errorHabitDetail,
   }) {
-    return loadedHabitDetail?.call(habit);
+    return loadedHabitDetail?.call(habit, listForProgressLineChart);
   }
 
   @override
@@ -738,12 +767,13 @@ class _$loadedHabitDetailImpl implements loadedHabitDetail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingHabitDetail,
-    TResult Function(Habit habit)? loadedHabitDetail,
+    TResult Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult Function(String e)? errorHabitDetail,
     required TResult orElse(),
   }) {
     if (loadedHabitDetail != null) {
-      return loadedHabitDetail(habit);
+      return loadedHabitDetail(habit, listForProgressLineChart);
     }
     return orElse();
   }
@@ -787,10 +817,13 @@ class _$loadedHabitDetailImpl implements loadedHabitDetail {
 }
 
 abstract class loadedHabitDetail implements DetailState {
-  const factory loadedHabitDetail({required final Habit habit}) =
+  const factory loadedHabitDetail(
+          {required final Habit habit,
+          required final List<int> listForProgressLineChart}) =
       _$loadedHabitDetailImpl;
 
   Habit get habit;
+  List<int> get listForProgressLineChart;
 
   /// Create a copy of DetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -870,7 +903,8 @@ class _$errorHabitDetailImpl implements errorHabitDetail {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingHabitDetail,
-    required TResult Function(Habit habit) loadedHabitDetail,
+    required TResult Function(Habit habit, List<int> listForProgressLineChart)
+        loadedHabitDetail,
     required TResult Function(String e) errorHabitDetail,
   }) {
     return errorHabitDetail(e);
@@ -881,7 +915,8 @@ class _$errorHabitDetailImpl implements errorHabitDetail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingHabitDetail,
-    TResult? Function(Habit habit)? loadedHabitDetail,
+    TResult? Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult? Function(String e)? errorHabitDetail,
   }) {
     return errorHabitDetail?.call(e);
@@ -892,7 +927,8 @@ class _$errorHabitDetailImpl implements errorHabitDetail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingHabitDetail,
-    TResult Function(Habit habit)? loadedHabitDetail,
+    TResult Function(Habit habit, List<int> listForProgressLineChart)?
+        loadedHabitDetail,
     TResult Function(String e)? errorHabitDetail,
     required TResult orElse(),
   }) {
