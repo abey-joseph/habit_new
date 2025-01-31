@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit/core/bloc/detail_bloc/detail_bloc.dart';
@@ -30,7 +27,7 @@ class DetailScreen extends StatelessWidget {
               ),
               body: SingleChildScrollView(
                 child: Column(
-                  spacing: 10,
+                  spacing: 20,
                   children: [
                     lineChart(state.listForProgressLineChart),
                     dateChart(state.habit.dateStatus)
@@ -44,10 +41,7 @@ class DetailScreen extends StatelessWidget {
           return Scaffold(body: Center(child: Text(state.e)));
         } else if (state is loadingHabitDetail) {
           return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator.adaptive(),
-            ),
-          );
+              body: Center(child: CircularProgressIndicator.adaptive()));
         } else {
           return Scaffold(body: Center(child: Text('Initializing...')));
         }
@@ -84,7 +78,7 @@ class DetailScreen extends StatelessWidget {
     });
 
     return Container(
-        padding: EdgeInsets.all(18),
+        padding: EdgeInsets.only(top: 18, bottom: 18, right: 18),
         color: Colors.transparent,
         height: 250,
         width: double.maxFinite,
@@ -117,7 +111,7 @@ class DetailScreen extends StatelessWidget {
                                           day.isAtSameMomentAs(lastDay)))
                                   ? (filledDateStatusList[index].isCompleted)
                                       ? Colors.blue
-                                      : Colors.grey
+                                      : Colors.grey[400]
                                   : Colors.transparent,
                             ),
                             child: Center(
@@ -156,7 +150,7 @@ class DetailScreen extends StatelessWidget {
         LineChartData(
             //backgroundColor: Colors.amber,
             maxX: progressList.length.toDouble(),
-            maxY: 25,
+            maxY: 100,
             lineBarsData: [
               LineChartBarData(
                 spots: List.generate(progressList.length, (index) {

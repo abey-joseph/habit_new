@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:habit/core/firebase/firebase_options.dart';
 import 'package:habit/core/shared_preferences/prefs.dart';
 import 'package:habit/data/dependencies/get_it_dependencies.dart';
@@ -52,6 +53,34 @@ class FirebaseAuthActions {
       return handleAuthException(e);
     } catch (e) {
       return e.toString();
+    }
+  }
+
+  Future<String> signInOrLogInWithGoogle() async {
+    try {
+      //begin interactive sign in process with google
+      final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+
+      //if the user cancel the sign up process
+      if (gUser == null) throw 'Sign Up Failed - no gAuth';
+
+      //obtain auth details
+      GoogleSignInAuthentication gAuth = await gUser.authentication;
+
+      //create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken,
+      );
+
+      //sign in with credential
+      await _auth!.signInWithCredential(credential);
+
+      return 'Sign Up Success';
+    } on FirebaseAuthException catch (e) {
+      return handleAuthException(e);
+    } catch (e) {
+      return 'Sign up failed ${e.toString()}';
     }
   }
 

@@ -77,8 +77,10 @@ List<int> dateStatusToProgressChartList(List<DateStatus> list) {
   int progress = 0;
   for (DateStatus item in list) {
     if (item.isCompleted) {
-      progress = progress + 2;
-      progressList.add(progress);
+      if (progress != 100) {
+        progress = progress + 2;
+        progressList.add(progress);
+      }
     } else {
       if (progress != 0) {
         progress = progress - 2;

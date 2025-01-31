@@ -48,3 +48,7 @@ Widget loginButton(String text, Function() onTap) {
     ),
   );
 }
+
+Widget googleSignInButton(Function() onTap) {
+  return IconButton(onPressed: onTap, icon: Icon(Icons.login));
+}

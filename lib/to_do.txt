@@ -3,7 +3,7 @@
 *** need to make a fucntion which will check if the current date and last entry date of each habit if it is empty
 - then fill up with data put complettion status as empty
 
+// make the DATE not depend on the system
 
-////// need make the bloc more efficent 
- - i have an idea like the main bloc have some more states where one state trigger when there is a change in the length of habit lidt
- - other one will trigger for all the other case when needed a refresh but only the minumum widgets will be depend on it - or only the needed one will be the reloaded
+//google sign in not keep on signed in or log in - need to check
+

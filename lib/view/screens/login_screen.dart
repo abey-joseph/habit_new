@@ -68,7 +68,34 @@ class LoginScreen extends StatelessWidget {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(loginOutput)));
             }
-          })
+          }),
+          googleSignInButton(() async {
+            loginOutput =
+                await locator<FirebaseAuthActions>().signInOrLogInWithGoogle();
+
+            if (loginOutput == "Sign Up Success") {
+              if (!context.mounted) return;
+
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(loginOutput)));
+
+              context.read<HabitBloc>().add(HabitEvent.fetchHabit());
+
+              if (!context.mounted) return;
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) =>
+                        HomeScreen()), // Replace NewScreen with your target screen
+                (Route<dynamic> route) =>
+                    false, // This removes all previous routes
+              );
+            } else {
+              if (!context.mounted) return;
+
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(loginOutput)));
+            }
+          }),
         ],
       ),
     ));
