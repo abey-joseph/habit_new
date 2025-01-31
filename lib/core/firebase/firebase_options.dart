@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,6 +46,16 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyB0xz7Eb-Xo2zugk4qYwK0UTB_Jw2OBp_g',
+    appId: '1:184809195338:web:3dea5d6a9908bd1b9ee3b3',
+    messagingSenderId: '184809195338',
+    projectId: 'habit-tracker-b0206',
+    authDomain: 'habit-tracker-b0206.firebaseapp.com',
+    storageBucket: 'habit-tracker-b0206.firebasestorage.app',
+    measurementId: 'G-Z0Z652DPPJ',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDTYRsl6CG3lg9xsS31cwIMbsSfCVCMjCI',
     appId: '1:184809195338:android:03275e6eb82d21b19ee3b3',
@@ -63,7 +70,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '184809195338',
     projectId: 'habit-tracker-b0206',
     storageBucket: 'habit-tracker-b0206.firebasestorage.app',
+    androidClientId:
+        '184809195338-d0s09nol0j4qeeutbd3sc4pdnvdvbvr4.apps.googleusercontent.com',
+    iosClientId:
+        '184809195338-ml8r9i46vvnt4h4n5b11rb1lenhl9k78.apps.googleusercontent.com',
     iosBundleId: 'com.example.habit',
   );
-
 }
