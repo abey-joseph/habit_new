@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
 import 'package:habit/core/hive/habit_hive_operation.dart';
@@ -19,11 +18,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<HabitBloc, HabitState>(
-      listener: (context, state) async {
-        // if (state is loaded) {
-        //   context.read<CheckBoxBloc>().add(refreshCheckBox());
-        // }
-      },
+      listener: (context, state) async {},
       child: Scaffold(
         backgroundColor: Color.fromRGBO(233, 233, 233, 1),
         bottomNavigationBar: BottomAppBar(
@@ -51,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                             onAddOrEdit: (value) {
                               context
                                   .read<HabitBloc>()
-                                  .add(HabitEvent.addHabit(habitName: value));
+                                  .add(HabitEvent.addHabits(habitName: value));
                             }));
                   },
                   icon: Icon(

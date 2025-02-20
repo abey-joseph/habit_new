@@ -36,15 +36,17 @@ fillingDataToCheckBoxList(List<Habit> list) {
   totalHabits = list.length;
 
   //fill that list with all false data first if empty
-  if (checkBoxList.isEmpty) {
-    createMockData(totalHabits);
-  } else if (totalHabits > checkBoxList.length) {
-    createMockDataForOneExtraRow();
-  }
+
+  createMockData(totalHabits);
 
   for (i = 0; i < totalHabits; i++) {
-    for (j = 0; (j < list[i].dateStatus.length && j < 5); j++) {
-      checkBoxList[i][j] = list[i].dateStatus[j].isCompleted;
+    for (j = (list[i].dateStatus.length - 1);
+        j >= (list[i].dateStatus.length - 5);
+        j--) {
+      //log(list[i].dateStatus[j].isCompleted.toString());
+      //innerList.add(list[i].dateStatus[j].isCompleted);
+      checkBoxList[i][(list[i].dateStatus.length - 1) - j] =
+          list[i].dateStatus[j].isCompleted;
     }
   }
 }
@@ -58,4 +60,13 @@ changeDataInCheckBoxList(int row, int column, bool value) async {
       .editHabitDateStatus(row, column, checkBoxList[row][column]);
 
   log(output);
+}
+
+addNewColumnIfDateChanges(DateTime currentDate, DateTime lastEntryDate) async {
+  int daysFromLastEntry = currentDate.difference(lastEntryDate).inDays;
+
+  await locator<HabitHiveOperation>()
+      .addEmptyColumnForDateStatus(daysFromLastEntry);
+
+  //refilling data from the Hive to checkBoxList will be done from the Bloc
 }

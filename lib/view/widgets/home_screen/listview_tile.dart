@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -28,7 +26,7 @@ class ListviewTile extends StatelessWidget {
                   onPressed: (context) {
                     context
                         .read<HabitBloc>()
-                        .add(HabitEvent.deleteHabit(index: index));
+                        .add(HabitEvent.deleteHabits(index: index));
                   }),
               SlidableAction(
                   icon: Icons.edit,
@@ -86,7 +84,7 @@ class ListviewTile extends StatelessWidget {
                         listener: (context, state) {},
                         builder: (context, state) {
                           if (state is checkBoxloaded) {
-                            log("rebuild widget at row $index and column $columnIndex");
+                            //log("rebuild widget at row $index and column $columnIndex");
                             return Checkbox(
                               value: state.checkList[index][columnIndex],
                               onChanged: (value) {

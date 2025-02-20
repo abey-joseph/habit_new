@@ -19,56 +19,64 @@ mixin _$HabitEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchHabit,
-    required TResult Function(String habitName) addHabit,
-    required TResult Function(int index) deleteHabit,
+    required TResult Function(String habitName) addHabits,
+    required TResult Function(int index) deleteHabits,
     required TResult Function(int index, String habitName) editHabit,
     required TResult Function() refreshHabit,
+    required TResult Function(DateTime currentDate, DateTime lastEntryDate)
+        dateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchHabit,
-    TResult? Function(String habitName)? addHabit,
-    TResult? Function(int index)? deleteHabit,
+    TResult? Function(String habitName)? addHabits,
+    TResult? Function(int index)? deleteHabits,
     TResult? Function(int index, String habitName)? editHabit,
     TResult? Function()? refreshHabit,
+    TResult? Function(DateTime currentDate, DateTime lastEntryDate)?
+        dateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchHabit,
-    TResult Function(String habitName)? addHabit,
-    TResult Function(int index)? deleteHabit,
+    TResult Function(String habitName)? addHabits,
+    TResult Function(int index)? deleteHabits,
     TResult Function(int index, String habitName)? editHabit,
     TResult Function()? refreshHabit,
+    TResult Function(DateTime currentDate, DateTime lastEntryDate)? dateChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchHabit value) fetchHabit,
-    required TResult Function(_AddHabit value) addHabit,
-    required TResult Function(_DeleteHabit value) deleteHabit,
-    required TResult Function(_EditHabit value) editHabit,
-    required TResult Function(_RefreshHabit value) refreshHabit,
+    required TResult Function(fetchHabit value) fetchHabit,
+    required TResult Function(addHabits value) addHabits,
+    required TResult Function(deleteHabits value) deleteHabits,
+    required TResult Function(editHabit value) editHabit,
+    required TResult Function(refreshHabit value) refreshHabit,
+    required TResult Function(dateChanged value) dateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchHabit value)? fetchHabit,
-    TResult? Function(_AddHabit value)? addHabit,
-    TResult? Function(_DeleteHabit value)? deleteHabit,
-    TResult? Function(_EditHabit value)? editHabit,
-    TResult? Function(_RefreshHabit value)? refreshHabit,
+    TResult? Function(fetchHabit value)? fetchHabit,
+    TResult? Function(addHabits value)? addHabits,
+    TResult? Function(deleteHabits value)? deleteHabits,
+    TResult? Function(editHabit value)? editHabit,
+    TResult? Function(refreshHabit value)? refreshHabit,
+    TResult? Function(dateChanged value)? dateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchHabit value)? fetchHabit,
-    TResult Function(_AddHabit value)? addHabit,
-    TResult Function(_DeleteHabit value)? deleteHabit,
-    TResult Function(_EditHabit value)? editHabit,
-    TResult Function(_RefreshHabit value)? refreshHabit,
+    TResult Function(fetchHabit value)? fetchHabit,
+    TResult Function(addHabits value)? addHabits,
+    TResult Function(deleteHabits value)? deleteHabits,
+    TResult Function(editHabit value)? editHabit,
+    TResult Function(refreshHabit value)? refreshHabit,
+    TResult Function(dateChanged value)? dateChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -96,18 +104,18 @@ class _$HabitEventCopyWithImpl<$Res, $Val extends HabitEvent>
 }
 
 /// @nodoc
-abstract class _$$FetchHabitImplCopyWith<$Res> {
-  factory _$$FetchHabitImplCopyWith(
-          _$FetchHabitImpl value, $Res Function(_$FetchHabitImpl) then) =
-      __$$FetchHabitImplCopyWithImpl<$Res>;
+abstract class _$$fetchHabitImplCopyWith<$Res> {
+  factory _$$fetchHabitImplCopyWith(
+          _$fetchHabitImpl value, $Res Function(_$fetchHabitImpl) then) =
+      __$$fetchHabitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FetchHabitImplCopyWithImpl<$Res>
-    extends _$HabitEventCopyWithImpl<$Res, _$FetchHabitImpl>
-    implements _$$FetchHabitImplCopyWith<$Res> {
-  __$$FetchHabitImplCopyWithImpl(
-      _$FetchHabitImpl _value, $Res Function(_$FetchHabitImpl) _then)
+class __$$fetchHabitImplCopyWithImpl<$Res>
+    extends _$HabitEventCopyWithImpl<$Res, _$fetchHabitImpl>
+    implements _$$fetchHabitImplCopyWith<$Res> {
+  __$$fetchHabitImplCopyWithImpl(
+      _$fetchHabitImpl _value, $Res Function(_$fetchHabitImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of HabitEvent
@@ -116,8 +124,8 @@ class __$$FetchHabitImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FetchHabitImpl implements _FetchHabit {
-  const _$FetchHabitImpl();
+class _$fetchHabitImpl implements fetchHabit {
+  const _$fetchHabitImpl();
 
   @override
   String toString() {
@@ -127,7 +135,7 @@ class _$FetchHabitImpl implements _FetchHabit {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FetchHabitImpl);
+        (other.runtimeType == runtimeType && other is _$fetchHabitImpl);
   }
 
   @override
@@ -137,10 +145,12 @@ class _$FetchHabitImpl implements _FetchHabit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchHabit,
-    required TResult Function(String habitName) addHabit,
-    required TResult Function(int index) deleteHabit,
+    required TResult Function(String habitName) addHabits,
+    required TResult Function(int index) deleteHabits,
     required TResult Function(int index, String habitName) editHabit,
     required TResult Function() refreshHabit,
+    required TResult Function(DateTime currentDate, DateTime lastEntryDate)
+        dateChanged,
   }) {
     return fetchHabit();
   }
@@ -149,10 +159,12 @@ class _$FetchHabitImpl implements _FetchHabit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchHabit,
-    TResult? Function(String habitName)? addHabit,
-    TResult? Function(int index)? deleteHabit,
+    TResult? Function(String habitName)? addHabits,
+    TResult? Function(int index)? deleteHabits,
     TResult? Function(int index, String habitName)? editHabit,
     TResult? Function()? refreshHabit,
+    TResult? Function(DateTime currentDate, DateTime lastEntryDate)?
+        dateChanged,
   }) {
     return fetchHabit?.call();
   }
@@ -161,10 +173,11 @@ class _$FetchHabitImpl implements _FetchHabit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchHabit,
-    TResult Function(String habitName)? addHabit,
-    TResult Function(int index)? deleteHabit,
+    TResult Function(String habitName)? addHabits,
+    TResult Function(int index)? deleteHabits,
     TResult Function(int index, String habitName)? editHabit,
     TResult Function()? refreshHabit,
+    TResult Function(DateTime currentDate, DateTime lastEntryDate)? dateChanged,
     required TResult orElse(),
   }) {
     if (fetchHabit != null) {
@@ -176,11 +189,12 @@ class _$FetchHabitImpl implements _FetchHabit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchHabit value) fetchHabit,
-    required TResult Function(_AddHabit value) addHabit,
-    required TResult Function(_DeleteHabit value) deleteHabit,
-    required TResult Function(_EditHabit value) editHabit,
-    required TResult Function(_RefreshHabit value) refreshHabit,
+    required TResult Function(fetchHabit value) fetchHabit,
+    required TResult Function(addHabits value) addHabits,
+    required TResult Function(deleteHabits value) deleteHabits,
+    required TResult Function(editHabit value) editHabit,
+    required TResult Function(refreshHabit value) refreshHabit,
+    required TResult Function(dateChanged value) dateChanged,
   }) {
     return fetchHabit(this);
   }
@@ -188,11 +202,12 @@ class _$FetchHabitImpl implements _FetchHabit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchHabit value)? fetchHabit,
-    TResult? Function(_AddHabit value)? addHabit,
-    TResult? Function(_DeleteHabit value)? deleteHabit,
-    TResult? Function(_EditHabit value)? editHabit,
-    TResult? Function(_RefreshHabit value)? refreshHabit,
+    TResult? Function(fetchHabit value)? fetchHabit,
+    TResult? Function(addHabits value)? addHabits,
+    TResult? Function(deleteHabits value)? deleteHabits,
+    TResult? Function(editHabit value)? editHabit,
+    TResult? Function(refreshHabit value)? refreshHabit,
+    TResult? Function(dateChanged value)? dateChanged,
   }) {
     return fetchHabit?.call(this);
   }
@@ -200,11 +215,12 @@ class _$FetchHabitImpl implements _FetchHabit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchHabit value)? fetchHabit,
-    TResult Function(_AddHabit value)? addHabit,
-    TResult Function(_DeleteHabit value)? deleteHabit,
-    TResult Function(_EditHabit value)? editHabit,
-    TResult Function(_RefreshHabit value)? refreshHabit,
+    TResult Function(fetchHabit value)? fetchHabit,
+    TResult Function(addHabits value)? addHabits,
+    TResult Function(deleteHabits value)? deleteHabits,
+    TResult Function(editHabit value)? editHabit,
+    TResult Function(refreshHabit value)? refreshHabit,
+    TResult Function(dateChanged value)? dateChanged,
     required TResult orElse(),
   }) {
     if (fetchHabit != null) {
@@ -214,25 +230,25 @@ class _$FetchHabitImpl implements _FetchHabit {
   }
 }
 
-abstract class _FetchHabit implements HabitEvent {
-  const factory _FetchHabit() = _$FetchHabitImpl;
+abstract class fetchHabit implements HabitEvent {
+  const factory fetchHabit() = _$fetchHabitImpl;
 }
 
 /// @nodoc
-abstract class _$$AddHabitImplCopyWith<$Res> {
-  factory _$$AddHabitImplCopyWith(
-          _$AddHabitImpl value, $Res Function(_$AddHabitImpl) then) =
-      __$$AddHabitImplCopyWithImpl<$Res>;
+abstract class _$$addHabitsImplCopyWith<$Res> {
+  factory _$$addHabitsImplCopyWith(
+          _$addHabitsImpl value, $Res Function(_$addHabitsImpl) then) =
+      __$$addHabitsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String habitName});
 }
 
 /// @nodoc
-class __$$AddHabitImplCopyWithImpl<$Res>
-    extends _$HabitEventCopyWithImpl<$Res, _$AddHabitImpl>
-    implements _$$AddHabitImplCopyWith<$Res> {
-  __$$AddHabitImplCopyWithImpl(
-      _$AddHabitImpl _value, $Res Function(_$AddHabitImpl) _then)
+class __$$addHabitsImplCopyWithImpl<$Res>
+    extends _$HabitEventCopyWithImpl<$Res, _$addHabitsImpl>
+    implements _$$addHabitsImplCopyWith<$Res> {
+  __$$addHabitsImplCopyWithImpl(
+      _$addHabitsImpl _value, $Res Function(_$addHabitsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of HabitEvent
@@ -242,7 +258,7 @@ class __$$AddHabitImplCopyWithImpl<$Res>
   $Res call({
     Object? habitName = null,
   }) {
-    return _then(_$AddHabitImpl(
+    return _then(_$addHabitsImpl(
       habitName: null == habitName
           ? _value.habitName
           : habitName // ignore: cast_nullable_to_non_nullable
@@ -253,22 +269,22 @@ class __$$AddHabitImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddHabitImpl implements _AddHabit {
-  const _$AddHabitImpl({required this.habitName});
+class _$addHabitsImpl implements addHabits {
+  const _$addHabitsImpl({required this.habitName});
 
   @override
   final String habitName;
 
   @override
   String toString() {
-    return 'HabitEvent.addHabit(habitName: $habitName)';
+    return 'HabitEvent.addHabits(habitName: $habitName)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddHabitImpl &&
+            other is _$addHabitsImpl &&
             (identical(other.habitName, habitName) ||
                 other.habitName == habitName));
   }
@@ -281,45 +297,50 @@ class _$AddHabitImpl implements _AddHabit {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddHabitImplCopyWith<_$AddHabitImpl> get copyWith =>
-      __$$AddHabitImplCopyWithImpl<_$AddHabitImpl>(this, _$identity);
+  _$$addHabitsImplCopyWith<_$addHabitsImpl> get copyWith =>
+      __$$addHabitsImplCopyWithImpl<_$addHabitsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchHabit,
-    required TResult Function(String habitName) addHabit,
-    required TResult Function(int index) deleteHabit,
+    required TResult Function(String habitName) addHabits,
+    required TResult Function(int index) deleteHabits,
     required TResult Function(int index, String habitName) editHabit,
     required TResult Function() refreshHabit,
+    required TResult Function(DateTime currentDate, DateTime lastEntryDate)
+        dateChanged,
   }) {
-    return addHabit(habitName);
+    return addHabits(habitName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchHabit,
-    TResult? Function(String habitName)? addHabit,
-    TResult? Function(int index)? deleteHabit,
+    TResult? Function(String habitName)? addHabits,
+    TResult? Function(int index)? deleteHabits,
     TResult? Function(int index, String habitName)? editHabit,
     TResult? Function()? refreshHabit,
+    TResult? Function(DateTime currentDate, DateTime lastEntryDate)?
+        dateChanged,
   }) {
-    return addHabit?.call(habitName);
+    return addHabits?.call(habitName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchHabit,
-    TResult Function(String habitName)? addHabit,
-    TResult Function(int index)? deleteHabit,
+    TResult Function(String habitName)? addHabits,
+    TResult Function(int index)? deleteHabits,
     TResult Function(int index, String habitName)? editHabit,
     TResult Function()? refreshHabit,
+    TResult Function(DateTime currentDate, DateTime lastEntryDate)? dateChanged,
     required TResult orElse(),
   }) {
-    if (addHabit != null) {
-      return addHabit(habitName);
+    if (addHabits != null) {
+      return addHabits(habitName);
     }
     return orElse();
   }
@@ -327,71 +348,74 @@ class _$AddHabitImpl implements _AddHabit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchHabit value) fetchHabit,
-    required TResult Function(_AddHabit value) addHabit,
-    required TResult Function(_DeleteHabit value) deleteHabit,
-    required TResult Function(_EditHabit value) editHabit,
-    required TResult Function(_RefreshHabit value) refreshHabit,
+    required TResult Function(fetchHabit value) fetchHabit,
+    required TResult Function(addHabits value) addHabits,
+    required TResult Function(deleteHabits value) deleteHabits,
+    required TResult Function(editHabit value) editHabit,
+    required TResult Function(refreshHabit value) refreshHabit,
+    required TResult Function(dateChanged value) dateChanged,
   }) {
-    return addHabit(this);
+    return addHabits(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchHabit value)? fetchHabit,
-    TResult? Function(_AddHabit value)? addHabit,
-    TResult? Function(_DeleteHabit value)? deleteHabit,
-    TResult? Function(_EditHabit value)? editHabit,
-    TResult? Function(_RefreshHabit value)? refreshHabit,
+    TResult? Function(fetchHabit value)? fetchHabit,
+    TResult? Function(addHabits value)? addHabits,
+    TResult? Function(deleteHabits value)? deleteHabits,
+    TResult? Function(editHabit value)? editHabit,
+    TResult? Function(refreshHabit value)? refreshHabit,
+    TResult? Function(dateChanged value)? dateChanged,
   }) {
-    return addHabit?.call(this);
+    return addHabits?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchHabit value)? fetchHabit,
-    TResult Function(_AddHabit value)? addHabit,
-    TResult Function(_DeleteHabit value)? deleteHabit,
-    TResult Function(_EditHabit value)? editHabit,
-    TResult Function(_RefreshHabit value)? refreshHabit,
+    TResult Function(fetchHabit value)? fetchHabit,
+    TResult Function(addHabits value)? addHabits,
+    TResult Function(deleteHabits value)? deleteHabits,
+    TResult Function(editHabit value)? editHabit,
+    TResult Function(refreshHabit value)? refreshHabit,
+    TResult Function(dateChanged value)? dateChanged,
     required TResult orElse(),
   }) {
-    if (addHabit != null) {
-      return addHabit(this);
+    if (addHabits != null) {
+      return addHabits(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddHabit implements HabitEvent {
-  const factory _AddHabit({required final String habitName}) = _$AddHabitImpl;
+abstract class addHabits implements HabitEvent {
+  const factory addHabits({required final String habitName}) = _$addHabitsImpl;
 
   String get habitName;
 
   /// Create a copy of HabitEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddHabitImplCopyWith<_$AddHabitImpl> get copyWith =>
+  _$$addHabitsImplCopyWith<_$addHabitsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeleteHabitImplCopyWith<$Res> {
-  factory _$$DeleteHabitImplCopyWith(
-          _$DeleteHabitImpl value, $Res Function(_$DeleteHabitImpl) then) =
-      __$$DeleteHabitImplCopyWithImpl<$Res>;
+abstract class _$$deleteHabitsImplCopyWith<$Res> {
+  factory _$$deleteHabitsImplCopyWith(
+          _$deleteHabitsImpl value, $Res Function(_$deleteHabitsImpl) then) =
+      __$$deleteHabitsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$DeleteHabitImplCopyWithImpl<$Res>
-    extends _$HabitEventCopyWithImpl<$Res, _$DeleteHabitImpl>
-    implements _$$DeleteHabitImplCopyWith<$Res> {
-  __$$DeleteHabitImplCopyWithImpl(
-      _$DeleteHabitImpl _value, $Res Function(_$DeleteHabitImpl) _then)
+class __$$deleteHabitsImplCopyWithImpl<$Res>
+    extends _$HabitEventCopyWithImpl<$Res, _$deleteHabitsImpl>
+    implements _$$deleteHabitsImplCopyWith<$Res> {
+  __$$deleteHabitsImplCopyWithImpl(
+      _$deleteHabitsImpl _value, $Res Function(_$deleteHabitsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of HabitEvent
@@ -401,7 +425,7 @@ class __$$DeleteHabitImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$DeleteHabitImpl(
+    return _then(_$deleteHabitsImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -412,22 +436,22 @@ class __$$DeleteHabitImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeleteHabitImpl implements _DeleteHabit {
-  const _$DeleteHabitImpl({required this.index});
+class _$deleteHabitsImpl implements deleteHabits {
+  const _$deleteHabitsImpl({required this.index});
 
   @override
   final int index;
 
   @override
   String toString() {
-    return 'HabitEvent.deleteHabit(index: $index)';
+    return 'HabitEvent.deleteHabits(index: $index)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeleteHabitImpl &&
+            other is _$deleteHabitsImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -439,45 +463,50 @@ class _$DeleteHabitImpl implements _DeleteHabit {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeleteHabitImplCopyWith<_$DeleteHabitImpl> get copyWith =>
-      __$$DeleteHabitImplCopyWithImpl<_$DeleteHabitImpl>(this, _$identity);
+  _$$deleteHabitsImplCopyWith<_$deleteHabitsImpl> get copyWith =>
+      __$$deleteHabitsImplCopyWithImpl<_$deleteHabitsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchHabit,
-    required TResult Function(String habitName) addHabit,
-    required TResult Function(int index) deleteHabit,
+    required TResult Function(String habitName) addHabits,
+    required TResult Function(int index) deleteHabits,
     required TResult Function(int index, String habitName) editHabit,
     required TResult Function() refreshHabit,
+    required TResult Function(DateTime currentDate, DateTime lastEntryDate)
+        dateChanged,
   }) {
-    return deleteHabit(index);
+    return deleteHabits(index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchHabit,
-    TResult? Function(String habitName)? addHabit,
-    TResult? Function(int index)? deleteHabit,
+    TResult? Function(String habitName)? addHabits,
+    TResult? Function(int index)? deleteHabits,
     TResult? Function(int index, String habitName)? editHabit,
     TResult? Function()? refreshHabit,
+    TResult? Function(DateTime currentDate, DateTime lastEntryDate)?
+        dateChanged,
   }) {
-    return deleteHabit?.call(index);
+    return deleteHabits?.call(index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchHabit,
-    TResult Function(String habitName)? addHabit,
-    TResult Function(int index)? deleteHabit,
+    TResult Function(String habitName)? addHabits,
+    TResult Function(int index)? deleteHabits,
     TResult Function(int index, String habitName)? editHabit,
     TResult Function()? refreshHabit,
+    TResult Function(DateTime currentDate, DateTime lastEntryDate)? dateChanged,
     required TResult orElse(),
   }) {
-    if (deleteHabit != null) {
-      return deleteHabit(index);
+    if (deleteHabits != null) {
+      return deleteHabits(index);
     }
     return orElse();
   }
@@ -485,71 +514,74 @@ class _$DeleteHabitImpl implements _DeleteHabit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchHabit value) fetchHabit,
-    required TResult Function(_AddHabit value) addHabit,
-    required TResult Function(_DeleteHabit value) deleteHabit,
-    required TResult Function(_EditHabit value) editHabit,
-    required TResult Function(_RefreshHabit value) refreshHabit,
+    required TResult Function(fetchHabit value) fetchHabit,
+    required TResult Function(addHabits value) addHabits,
+    required TResult Function(deleteHabits value) deleteHabits,
+    required TResult Function(editHabit value) editHabit,
+    required TResult Function(refreshHabit value) refreshHabit,
+    required TResult Function(dateChanged value) dateChanged,
   }) {
-    return deleteHabit(this);
+    return deleteHabits(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchHabit value)? fetchHabit,
-    TResult? Function(_AddHabit value)? addHabit,
-    TResult? Function(_DeleteHabit value)? deleteHabit,
-    TResult? Function(_EditHabit value)? editHabit,
-    TResult? Function(_RefreshHabit value)? refreshHabit,
+    TResult? Function(fetchHabit value)? fetchHabit,
+    TResult? Function(addHabits value)? addHabits,
+    TResult? Function(deleteHabits value)? deleteHabits,
+    TResult? Function(editHabit value)? editHabit,
+    TResult? Function(refreshHabit value)? refreshHabit,
+    TResult? Function(dateChanged value)? dateChanged,
   }) {
-    return deleteHabit?.call(this);
+    return deleteHabits?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchHabit value)? fetchHabit,
-    TResult Function(_AddHabit value)? addHabit,
-    TResult Function(_DeleteHabit value)? deleteHabit,
-    TResult Function(_EditHabit value)? editHabit,
-    TResult Function(_RefreshHabit value)? refreshHabit,
+    TResult Function(fetchHabit value)? fetchHabit,
+    TResult Function(addHabits value)? addHabits,
+    TResult Function(deleteHabits value)? deleteHabits,
+    TResult Function(editHabit value)? editHabit,
+    TResult Function(refreshHabit value)? refreshHabit,
+    TResult Function(dateChanged value)? dateChanged,
     required TResult orElse(),
   }) {
-    if (deleteHabit != null) {
-      return deleteHabit(this);
+    if (deleteHabits != null) {
+      return deleteHabits(this);
     }
     return orElse();
   }
 }
 
-abstract class _DeleteHabit implements HabitEvent {
-  const factory _DeleteHabit({required final int index}) = _$DeleteHabitImpl;
+abstract class deleteHabits implements HabitEvent {
+  const factory deleteHabits({required final int index}) = _$deleteHabitsImpl;
 
   int get index;
 
   /// Create a copy of HabitEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteHabitImplCopyWith<_$DeleteHabitImpl> get copyWith =>
+  _$$deleteHabitsImplCopyWith<_$deleteHabitsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EditHabitImplCopyWith<$Res> {
-  factory _$$EditHabitImplCopyWith(
-          _$EditHabitImpl value, $Res Function(_$EditHabitImpl) then) =
-      __$$EditHabitImplCopyWithImpl<$Res>;
+abstract class _$$editHabitImplCopyWith<$Res> {
+  factory _$$editHabitImplCopyWith(
+          _$editHabitImpl value, $Res Function(_$editHabitImpl) then) =
+      __$$editHabitImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, String habitName});
 }
 
 /// @nodoc
-class __$$EditHabitImplCopyWithImpl<$Res>
-    extends _$HabitEventCopyWithImpl<$Res, _$EditHabitImpl>
-    implements _$$EditHabitImplCopyWith<$Res> {
-  __$$EditHabitImplCopyWithImpl(
-      _$EditHabitImpl _value, $Res Function(_$EditHabitImpl) _then)
+class __$$editHabitImplCopyWithImpl<$Res>
+    extends _$HabitEventCopyWithImpl<$Res, _$editHabitImpl>
+    implements _$$editHabitImplCopyWith<$Res> {
+  __$$editHabitImplCopyWithImpl(
+      _$editHabitImpl _value, $Res Function(_$editHabitImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of HabitEvent
@@ -560,7 +592,7 @@ class __$$EditHabitImplCopyWithImpl<$Res>
     Object? index = null,
     Object? habitName = null,
   }) {
-    return _then(_$EditHabitImpl(
+    return _then(_$editHabitImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -575,8 +607,8 @@ class __$$EditHabitImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EditHabitImpl implements _EditHabit {
-  const _$EditHabitImpl({required this.index, required this.habitName});
+class _$editHabitImpl implements editHabit {
+  const _$editHabitImpl({required this.index, required this.habitName});
 
   @override
   final int index;
@@ -592,7 +624,7 @@ class _$EditHabitImpl implements _EditHabit {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EditHabitImpl &&
+            other is _$editHabitImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.habitName, habitName) ||
                 other.habitName == habitName));
@@ -606,17 +638,19 @@ class _$EditHabitImpl implements _EditHabit {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$EditHabitImplCopyWith<_$EditHabitImpl> get copyWith =>
-      __$$EditHabitImplCopyWithImpl<_$EditHabitImpl>(this, _$identity);
+  _$$editHabitImplCopyWith<_$editHabitImpl> get copyWith =>
+      __$$editHabitImplCopyWithImpl<_$editHabitImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchHabit,
-    required TResult Function(String habitName) addHabit,
-    required TResult Function(int index) deleteHabit,
+    required TResult Function(String habitName) addHabits,
+    required TResult Function(int index) deleteHabits,
     required TResult Function(int index, String habitName) editHabit,
     required TResult Function() refreshHabit,
+    required TResult Function(DateTime currentDate, DateTime lastEntryDate)
+        dateChanged,
   }) {
     return editHabit(index, habitName);
   }
@@ -625,10 +659,12 @@ class _$EditHabitImpl implements _EditHabit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchHabit,
-    TResult? Function(String habitName)? addHabit,
-    TResult? Function(int index)? deleteHabit,
+    TResult? Function(String habitName)? addHabits,
+    TResult? Function(int index)? deleteHabits,
     TResult? Function(int index, String habitName)? editHabit,
     TResult? Function()? refreshHabit,
+    TResult? Function(DateTime currentDate, DateTime lastEntryDate)?
+        dateChanged,
   }) {
     return editHabit?.call(index, habitName);
   }
@@ -637,10 +673,11 @@ class _$EditHabitImpl implements _EditHabit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchHabit,
-    TResult Function(String habitName)? addHabit,
-    TResult Function(int index)? deleteHabit,
+    TResult Function(String habitName)? addHabits,
+    TResult Function(int index)? deleteHabits,
     TResult Function(int index, String habitName)? editHabit,
     TResult Function()? refreshHabit,
+    TResult Function(DateTime currentDate, DateTime lastEntryDate)? dateChanged,
     required TResult orElse(),
   }) {
     if (editHabit != null) {
@@ -652,11 +689,12 @@ class _$EditHabitImpl implements _EditHabit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchHabit value) fetchHabit,
-    required TResult Function(_AddHabit value) addHabit,
-    required TResult Function(_DeleteHabit value) deleteHabit,
-    required TResult Function(_EditHabit value) editHabit,
-    required TResult Function(_RefreshHabit value) refreshHabit,
+    required TResult Function(fetchHabit value) fetchHabit,
+    required TResult Function(addHabits value) addHabits,
+    required TResult Function(deleteHabits value) deleteHabits,
+    required TResult Function(editHabit value) editHabit,
+    required TResult Function(refreshHabit value) refreshHabit,
+    required TResult Function(dateChanged value) dateChanged,
   }) {
     return editHabit(this);
   }
@@ -664,11 +702,12 @@ class _$EditHabitImpl implements _EditHabit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchHabit value)? fetchHabit,
-    TResult? Function(_AddHabit value)? addHabit,
-    TResult? Function(_DeleteHabit value)? deleteHabit,
-    TResult? Function(_EditHabit value)? editHabit,
-    TResult? Function(_RefreshHabit value)? refreshHabit,
+    TResult? Function(fetchHabit value)? fetchHabit,
+    TResult? Function(addHabits value)? addHabits,
+    TResult? Function(deleteHabits value)? deleteHabits,
+    TResult? Function(editHabit value)? editHabit,
+    TResult? Function(refreshHabit value)? refreshHabit,
+    TResult? Function(dateChanged value)? dateChanged,
   }) {
     return editHabit?.call(this);
   }
@@ -676,11 +715,12 @@ class _$EditHabitImpl implements _EditHabit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchHabit value)? fetchHabit,
-    TResult Function(_AddHabit value)? addHabit,
-    TResult Function(_DeleteHabit value)? deleteHabit,
-    TResult Function(_EditHabit value)? editHabit,
-    TResult Function(_RefreshHabit value)? refreshHabit,
+    TResult Function(fetchHabit value)? fetchHabit,
+    TResult Function(addHabits value)? addHabits,
+    TResult Function(deleteHabits value)? deleteHabits,
+    TResult Function(editHabit value)? editHabit,
+    TResult Function(refreshHabit value)? refreshHabit,
+    TResult Function(dateChanged value)? dateChanged,
     required TResult orElse(),
   }) {
     if (editHabit != null) {
@@ -690,10 +730,10 @@ class _$EditHabitImpl implements _EditHabit {
   }
 }
 
-abstract class _EditHabit implements HabitEvent {
-  const factory _EditHabit(
+abstract class editHabit implements HabitEvent {
+  const factory editHabit(
       {required final int index,
-      required final String habitName}) = _$EditHabitImpl;
+      required final String habitName}) = _$editHabitImpl;
 
   int get index;
   String get habitName;
@@ -701,23 +741,23 @@ abstract class _EditHabit implements HabitEvent {
   /// Create a copy of HabitEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EditHabitImplCopyWith<_$EditHabitImpl> get copyWith =>
+  _$$editHabitImplCopyWith<_$editHabitImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RefreshHabitImplCopyWith<$Res> {
-  factory _$$RefreshHabitImplCopyWith(
-          _$RefreshHabitImpl value, $Res Function(_$RefreshHabitImpl) then) =
-      __$$RefreshHabitImplCopyWithImpl<$Res>;
+abstract class _$$refreshHabitImplCopyWith<$Res> {
+  factory _$$refreshHabitImplCopyWith(
+          _$refreshHabitImpl value, $Res Function(_$refreshHabitImpl) then) =
+      __$$refreshHabitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RefreshHabitImplCopyWithImpl<$Res>
-    extends _$HabitEventCopyWithImpl<$Res, _$RefreshHabitImpl>
-    implements _$$RefreshHabitImplCopyWith<$Res> {
-  __$$RefreshHabitImplCopyWithImpl(
-      _$RefreshHabitImpl _value, $Res Function(_$RefreshHabitImpl) _then)
+class __$$refreshHabitImplCopyWithImpl<$Res>
+    extends _$HabitEventCopyWithImpl<$Res, _$refreshHabitImpl>
+    implements _$$refreshHabitImplCopyWith<$Res> {
+  __$$refreshHabitImplCopyWithImpl(
+      _$refreshHabitImpl _value, $Res Function(_$refreshHabitImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of HabitEvent
@@ -726,8 +766,8 @@ class __$$RefreshHabitImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RefreshHabitImpl implements _RefreshHabit {
-  const _$RefreshHabitImpl();
+class _$refreshHabitImpl implements refreshHabit {
+  const _$refreshHabitImpl();
 
   @override
   String toString() {
@@ -737,7 +777,7 @@ class _$RefreshHabitImpl implements _RefreshHabit {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RefreshHabitImpl);
+        (other.runtimeType == runtimeType && other is _$refreshHabitImpl);
   }
 
   @override
@@ -747,10 +787,12 @@ class _$RefreshHabitImpl implements _RefreshHabit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchHabit,
-    required TResult Function(String habitName) addHabit,
-    required TResult Function(int index) deleteHabit,
+    required TResult Function(String habitName) addHabits,
+    required TResult Function(int index) deleteHabits,
     required TResult Function(int index, String habitName) editHabit,
     required TResult Function() refreshHabit,
+    required TResult Function(DateTime currentDate, DateTime lastEntryDate)
+        dateChanged,
   }) {
     return refreshHabit();
   }
@@ -759,10 +801,12 @@ class _$RefreshHabitImpl implements _RefreshHabit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchHabit,
-    TResult? Function(String habitName)? addHabit,
-    TResult? Function(int index)? deleteHabit,
+    TResult? Function(String habitName)? addHabits,
+    TResult? Function(int index)? deleteHabits,
     TResult? Function(int index, String habitName)? editHabit,
     TResult? Function()? refreshHabit,
+    TResult? Function(DateTime currentDate, DateTime lastEntryDate)?
+        dateChanged,
   }) {
     return refreshHabit?.call();
   }
@@ -771,10 +815,11 @@ class _$RefreshHabitImpl implements _RefreshHabit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchHabit,
-    TResult Function(String habitName)? addHabit,
-    TResult Function(int index)? deleteHabit,
+    TResult Function(String habitName)? addHabits,
+    TResult Function(int index)? deleteHabits,
     TResult Function(int index, String habitName)? editHabit,
     TResult Function()? refreshHabit,
+    TResult Function(DateTime currentDate, DateTime lastEntryDate)? dateChanged,
     required TResult orElse(),
   }) {
     if (refreshHabit != null) {
@@ -786,11 +831,12 @@ class _$RefreshHabitImpl implements _RefreshHabit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchHabit value) fetchHabit,
-    required TResult Function(_AddHabit value) addHabit,
-    required TResult Function(_DeleteHabit value) deleteHabit,
-    required TResult Function(_EditHabit value) editHabit,
-    required TResult Function(_RefreshHabit value) refreshHabit,
+    required TResult Function(fetchHabit value) fetchHabit,
+    required TResult Function(addHabits value) addHabits,
+    required TResult Function(deleteHabits value) deleteHabits,
+    required TResult Function(editHabit value) editHabit,
+    required TResult Function(refreshHabit value) refreshHabit,
+    required TResult Function(dateChanged value) dateChanged,
   }) {
     return refreshHabit(this);
   }
@@ -798,11 +844,12 @@ class _$RefreshHabitImpl implements _RefreshHabit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchHabit value)? fetchHabit,
-    TResult? Function(_AddHabit value)? addHabit,
-    TResult? Function(_DeleteHabit value)? deleteHabit,
-    TResult? Function(_EditHabit value)? editHabit,
-    TResult? Function(_RefreshHabit value)? refreshHabit,
+    TResult? Function(fetchHabit value)? fetchHabit,
+    TResult? Function(addHabits value)? addHabits,
+    TResult? Function(deleteHabits value)? deleteHabits,
+    TResult? Function(editHabit value)? editHabit,
+    TResult? Function(refreshHabit value)? refreshHabit,
+    TResult? Function(dateChanged value)? dateChanged,
   }) {
     return refreshHabit?.call(this);
   }
@@ -810,11 +857,12 @@ class _$RefreshHabitImpl implements _RefreshHabit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchHabit value)? fetchHabit,
-    TResult Function(_AddHabit value)? addHabit,
-    TResult Function(_DeleteHabit value)? deleteHabit,
-    TResult Function(_EditHabit value)? editHabit,
-    TResult Function(_RefreshHabit value)? refreshHabit,
+    TResult Function(fetchHabit value)? fetchHabit,
+    TResult Function(addHabits value)? addHabits,
+    TResult Function(deleteHabits value)? deleteHabits,
+    TResult Function(editHabit value)? editHabit,
+    TResult Function(refreshHabit value)? refreshHabit,
+    TResult Function(dateChanged value)? dateChanged,
     required TResult orElse(),
   }) {
     if (refreshHabit != null) {
@@ -824,8 +872,188 @@ class _$RefreshHabitImpl implements _RefreshHabit {
   }
 }
 
-abstract class _RefreshHabit implements HabitEvent {
-  const factory _RefreshHabit() = _$RefreshHabitImpl;
+abstract class refreshHabit implements HabitEvent {
+  const factory refreshHabit() = _$refreshHabitImpl;
+}
+
+/// @nodoc
+abstract class _$$dateChangedImplCopyWith<$Res> {
+  factory _$$dateChangedImplCopyWith(
+          _$dateChangedImpl value, $Res Function(_$dateChangedImpl) then) =
+      __$$dateChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime currentDate, DateTime lastEntryDate});
+}
+
+/// @nodoc
+class __$$dateChangedImplCopyWithImpl<$Res>
+    extends _$HabitEventCopyWithImpl<$Res, _$dateChangedImpl>
+    implements _$$dateChangedImplCopyWith<$Res> {
+  __$$dateChangedImplCopyWithImpl(
+      _$dateChangedImpl _value, $Res Function(_$dateChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HabitEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentDate = null,
+    Object? lastEntryDate = null,
+  }) {
+    return _then(_$dateChangedImpl(
+      currentDate: null == currentDate
+          ? _value.currentDate
+          : currentDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastEntryDate: null == lastEntryDate
+          ? _value.lastEntryDate
+          : lastEntryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$dateChangedImpl implements dateChanged {
+  const _$dateChangedImpl(
+      {required this.currentDate, required this.lastEntryDate});
+
+  @override
+  final DateTime currentDate;
+  @override
+  final DateTime lastEntryDate;
+
+  @override
+  String toString() {
+    return 'HabitEvent.dateChanged(currentDate: $currentDate, lastEntryDate: $lastEntryDate)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$dateChangedImpl &&
+            (identical(other.currentDate, currentDate) ||
+                other.currentDate == currentDate) &&
+            (identical(other.lastEntryDate, lastEntryDate) ||
+                other.lastEntryDate == lastEntryDate));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, currentDate, lastEntryDate);
+
+  /// Create a copy of HabitEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$dateChangedImplCopyWith<_$dateChangedImpl> get copyWith =>
+      __$$dateChangedImplCopyWithImpl<_$dateChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchHabit,
+    required TResult Function(String habitName) addHabits,
+    required TResult Function(int index) deleteHabits,
+    required TResult Function(int index, String habitName) editHabit,
+    required TResult Function() refreshHabit,
+    required TResult Function(DateTime currentDate, DateTime lastEntryDate)
+        dateChanged,
+  }) {
+    return dateChanged(currentDate, lastEntryDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchHabit,
+    TResult? Function(String habitName)? addHabits,
+    TResult? Function(int index)? deleteHabits,
+    TResult? Function(int index, String habitName)? editHabit,
+    TResult? Function()? refreshHabit,
+    TResult? Function(DateTime currentDate, DateTime lastEntryDate)?
+        dateChanged,
+  }) {
+    return dateChanged?.call(currentDate, lastEntryDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchHabit,
+    TResult Function(String habitName)? addHabits,
+    TResult Function(int index)? deleteHabits,
+    TResult Function(int index, String habitName)? editHabit,
+    TResult Function()? refreshHabit,
+    TResult Function(DateTime currentDate, DateTime lastEntryDate)? dateChanged,
+    required TResult orElse(),
+  }) {
+    if (dateChanged != null) {
+      return dateChanged(currentDate, lastEntryDate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(fetchHabit value) fetchHabit,
+    required TResult Function(addHabits value) addHabits,
+    required TResult Function(deleteHabits value) deleteHabits,
+    required TResult Function(editHabit value) editHabit,
+    required TResult Function(refreshHabit value) refreshHabit,
+    required TResult Function(dateChanged value) dateChanged,
+  }) {
+    return dateChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(fetchHabit value)? fetchHabit,
+    TResult? Function(addHabits value)? addHabits,
+    TResult? Function(deleteHabits value)? deleteHabits,
+    TResult? Function(editHabit value)? editHabit,
+    TResult? Function(refreshHabit value)? refreshHabit,
+    TResult? Function(dateChanged value)? dateChanged,
+  }) {
+    return dateChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(fetchHabit value)? fetchHabit,
+    TResult Function(addHabits value)? addHabits,
+    TResult Function(deleteHabits value)? deleteHabits,
+    TResult Function(editHabit value)? editHabit,
+    TResult Function(refreshHabit value)? refreshHabit,
+    TResult Function(dateChanged value)? dateChanged,
+    required TResult orElse(),
+  }) {
+    if (dateChanged != null) {
+      return dateChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class dateChanged implements HabitEvent {
+  const factory dateChanged(
+      {required final DateTime currentDate,
+      required final DateTime lastEntryDate}) = _$dateChangedImpl;
+
+  DateTime get currentDate;
+  DateTime get lastEntryDate;
+
+  /// Create a copy of HabitEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$dateChangedImplCopyWith<_$dateChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

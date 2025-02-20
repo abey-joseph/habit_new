@@ -28,13 +28,13 @@ void main(List<String> args) async {
     //signout if already installed before
     bool isFirstTime = await locator<Prefs>().checkFirstTime();
     if (isFirstTime) {
-      locator<FirebaseAuthActions>().signout();
+      await locator<FirebaseAuthActions>().signout();
     }
 
     runApp(MultiBlocProvider(
       providers: [
         BlocProvider<HabitBloc>(
-          create: (context) => HabitBloc()..add(HabitEvent.fetchHabit()),
+          create: (context) => HabitBloc(),
         ),
         BlocProvider<CheckBoxBloc>(
             create: (context) => locator<CheckBoxBloc>()),

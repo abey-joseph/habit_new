@@ -38,7 +38,7 @@ Future<String> addHabit(String habitName) async {
       dateStatus: List.generate(
           5,
           (index) => DateStatus(
-              date: today.subtract(Duration(days: index)),
+              date: today.subtract(Duration(days: 4 - index)),
               isCompleted: false)));
 
   //add and get oupput
