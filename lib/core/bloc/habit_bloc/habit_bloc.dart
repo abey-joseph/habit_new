@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,27 +38,30 @@ class HabitBloc extends Bloc<HabitEvent, HabitState> {
         emit(error(e: e.toString()));
       }
 
-      //to check if date are mismatch and trigger data change and update UI
-      // create a function to get last entry Date >> done inside the Habit Hive operation as STATIC variable
-      //call it and compare
-      //THEN TRIGGER THE EVENT FOR IT
+      /*  
+        The below code is to check for the data change and trigger actions based on that
 
-      //await Future.delayed(Duration(seconds: 5));
+        if the last entry date and current date are different then
+        it computes the date difference and add empty columns to the data in Hive and local list
+        then update the UI
+       */
 
-      final now = DateTime.now();
-      final last = HabitHiveOperation.lastEntryDate;
+      Timer.periodic(Duration(seconds: 30), (timer) {
+        final now = DateTime.now();
+        final last = HabitHiveOperation.lastEntryDate;
 
-      final nowDay = DateTime(now.year, now.month, now.day);
-      final lastDay = DateTime(last.year, last.month, last.day);
-      //log("Last entry date is $lastDay");
+        final nowDay = DateTime(now.year, now.month, now.day);
+        final lastDay = DateTime(last.year, last.month, last.day);
+        //log("Last entry date is $lastDay");
 
-      if (nowDay.difference(lastDay).inDays > 0) {
-        log("Date checked and found that last entry is ${nowDay.difference(lastDay).inDays} old- so triggering data addition and UI update");
-        HabitHiveOperation.lastEntryDate = DateTime.now();
-        add(dateChanged(currentDate: nowDay, lastEntryDate: lastDay));
-      } else {
-        log("Date checked and found no difference in date from last entry date");
-      }
+        if (nowDay.difference(lastDay).inDays > 0) {
+          log("Date checked and found that last entry is ${nowDay.difference(lastDay).inDays} old- so triggering data addition and UI update");
+          HabitHiveOperation.lastEntryDate = DateTime.now();
+          add(dateChanged(currentDate: nowDay, lastEntryDate: lastDay));
+        } else {
+          //log("Date checked and found no difference in date from last entry date");
+        }
+      });
     });
 
     on<addHabits>((event, emit) async {
