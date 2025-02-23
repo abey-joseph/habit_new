@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
+import 'package:habit/core/bloc/detail_bloc/detail_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/view/screens/detail_screen.dart';
 import 'package:habit/view/widgets/dialog/add_dialog.dart';
@@ -57,8 +58,13 @@ class ListviewTile extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 15.0),
                     child: GestureDetector(
                         onTap: () {
+                          context
+                              .read<DetailBloc>()
+                              .add(fetchHabitDetail(index: index));
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => DetailScreen()));
+                              builder: (context) => DetailScreen(
+                                    index: index,
+                                  )));
                         },
                         child: Text(habitName)),
                   )),

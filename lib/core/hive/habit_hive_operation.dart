@@ -141,13 +141,16 @@ class HabitHiveOperation {
   }
 
   Future<Habit> getHabit(int index) async {
-    var habitBox = _openBox();
-    return Habit(
-        habit: 'test',
-        uid: (locator<FirebaseAuthActions>().currentUser == null)
-            ? 'null'
-            : locator<FirebaseAuthActions>().currentUser!.uid,
-        dateStatus: []);
+    var habitBox = await _openBox();
+    Habit habit = habitBox.getAt(index) ??
+        Habit(
+            habit: 'No Habit found',
+            uid: (locator<FirebaseAuthActions>().currentUser == null)
+                ? 'null'
+                : locator<FirebaseAuthActions>().currentUser!.uid,
+            dateStatus: []);
+
+    return habit;
   }
 
   Future<List<Habit>> getAllHabit() async {

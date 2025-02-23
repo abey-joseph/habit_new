@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit/core/bloc/detail_bloc/detail_bloc.dart';
 import 'package:habit/core/bloc/check_box_bloc/check_box_bloc.dart';
 import 'package:habit/core/bloc/habit_bloc/habit_bloc.dart';
 import 'package:habit/core/firebase/firebase_auth_actions.dart';
@@ -33,11 +34,10 @@ void main(List<String> args) async {
 
     runApp(MultiBlocProvider(
       providers: [
-        BlocProvider<HabitBloc>(
-          create: (context) => HabitBloc(),
-        ),
+        BlocProvider<HabitBloc>(create: (context) => HabitBloc()),
         BlocProvider<CheckBoxBloc>(
             create: (context) => locator<CheckBoxBloc>()),
+        BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
       ],
       child: HabitTracker(),
     ));
